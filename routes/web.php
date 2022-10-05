@@ -17,11 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-    echo    "this is about page";
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/contact', function () {
-    echo    "this is contact page";
-});
-
+require __DIR__.'/auth.php';
