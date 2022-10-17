@@ -20,13 +20,20 @@ class AdminController extends Controller
         // dd($request->all());
 
         $check = $request->all();
-        if(Auth::guard('admin')->attempt(['email' => $check['email'], 'password' => $check['password'] ])){
-
-            return redirect()->route('admin.dashboard')->with('error','Admin Login Successfully');
-             }
-        else{
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => 
+        $request->password], $request->remember)) {
+        return redirect()->intended(route('admin.dashboard')->with('error','Admin Login Successfully!'));
+        }else{
             return back()->with('error','Invalid Email or Passowrd');
         }
+
+        // if(Auth::guard('admin')->attempt(['email' => $check['email'], 'password' => $check['password'] ])){
+
+        //     return redirect()->route('admin.dashboard')->with('error','Admin Login Successfully');
+        //      }
+        // else{
+        //     return back()->with('error','Invalid Email or Passowrd');
+        // }
   
     }   //end method
 }
