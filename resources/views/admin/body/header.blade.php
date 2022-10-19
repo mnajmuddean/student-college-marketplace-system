@@ -139,11 +139,12 @@ $adminData = DB::table('admins')->first();
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+          <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.change.password')  }}">
             <i class="bi bi-gear"></i>
-            <span>Account Settings</span>
+            <span>Change Password</span>
           </a>
         </li>
+        
         <li>
           <hr class="dropdown-divider">
         </li>
