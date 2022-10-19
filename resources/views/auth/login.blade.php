@@ -1,48 +1,84 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+@extends('frontend.main_master')
+@section('content')
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Login Register</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        @endif
-   
-        <form method="POST" action="{{  isset($guard) ? url($guard.'/login') : route('login')  }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Login Content Area -->
+            <div class="page-section mb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                            <!-- Login Form s-->
+                            <form method="POST" action="{{  isset($guard) ? url($guard.'/login') : route('login')  }}">
+                             @csrf
+                                <div class="login-form">
+                                    <h4 class="login-title">Login</h4>
+                                    <div class="row">
+                                        <div class="col-md-12 col-12 mb-20">
+                                            <label>Email Address*</label>
+                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label>Password</label>
+                                            <input class="mb-0" type="password" id="password" name="password"placeholder="Password">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
+                                                <input type="checkbox" id="remember_me">
+                                                <label for="remember_me">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
+                                            <a href="{{ route('password.request')}}"> Forget Password?</a>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="register-button mt-0" type="submit">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                            <form action="#">
+                                <div class="login-form">
+                                    <h4 class="login-title">Register</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>First Name</label>
+                                            <input class="mb-0" type="text" placeholder="First Name">
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Last Name</label>
+                                            <input class="mb-0" type="text" placeholder="Last Name">
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Email Address*</label>
+                                            <input class="mb-0" type="email" placeholder="Email Address">
+                                        </div>
+                                        <div class="col-md-6 mb-20">
+                                            <label>Password</label>
+                                            <input class="mb-0" type="password" placeholder="Password">
+                                        </div>
+                                        <div class="col-md-6 mb-20">
+                                            <label>Confirm Password</label>
+                                            <input class="mb-0" type="password" placeholder="Confirm Password">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="register-button mt-0">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+@endsection
