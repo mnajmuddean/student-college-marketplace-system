@@ -9,6 +9,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
   <!-- Favicons -->
   <link href="{{ asset('/logo/ujscms-logo.png')}}" rel="icon">  
   <link href="{{ asset('/backend/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> 
@@ -25,6 +26,8 @@
   <link href="{{ asset('/backend/vendor/quill/quill.bubble.css')}}" rel="stylesheet"> 
   <link href="{{ asset('/backend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">  
   <link href="{{ asset('/backend/vendor/simple-datatables/style.css')}}" rel="stylesheet">  
+  
+
 
   <!-- Template Main CSS File -->
   <link href="{{  asset('/backend/css/style.css')}}" rel="stylesheet"> 
@@ -60,6 +63,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="{{ asset('/backend/vendor/apexcharts/apexcharts.min.js') }}"></script> 
   <script src="{{ asset('/backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('/backend/vendor/chart.js/chart.min.js') }}"></script> 
@@ -71,6 +75,30 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('/backend/js/main.js')}}"></script> 
+  
+
+  <script>
+    @if(Session::has('message'))
+    var type = "{{  Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info' :
+        toastr.info(" {{  Session::get('message') }}");
+        break;
+
+        case 'success' : 
+        toastr.success(" {{  Session::get('message') }}");
+        break;
+
+        case 'warning' :
+        toastr.warning(" {{  Session::get('message') }}");
+        break;
+
+        case 'error' :
+        toastr.error(" {{  Session::get('message') }}");
+        break;
+    }
+    @endif
+</script>
 
 </body>
 
