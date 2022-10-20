@@ -4,7 +4,7 @@
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ url('/')}}">Home</a></li>
                             <li class="active">Login Register</li>
                         </ul>
                     </div>
@@ -24,11 +24,11 @@
                                     <div class="row">
                                         <div class="col-md-12 col-12 mb-20">
                                             <label>Email Address*</label>
-                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address">
+                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address" required>
                                         </div>
                                         <div class="col-12 mb-20">
                                             <label>Password</label>
-                                            <input class="mb-0" type="password" id="password" name="password"placeholder="Password">
+                                            <input class="mb-0" type="password" id="password" name="password"placeholder="Password" required>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
@@ -47,32 +47,59 @@
                             </form>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                            <form action="#">
+                        <form method="POST" action="{{ route('register') }}">
+                         @csrf
+
                                 <div class="login-form">
                                     <h4 class="login-title">Register</h4>
                                     <div class="row">
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>First Name</label>
-                                            <input class="mb-0" type="text" placeholder="First Name">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>Last Name</label>
-                                            <input class="mb-0" type="text" placeholder="Last Name">
+                                            <label>Full Name</label>
+                                            <input class="mb-0" type="text" id="name" name="name" placeholder="Full Name" required>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <label>Email Address*</label>
-                                            <input class="mb-0" type="email" placeholder="Email Address">
+                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address" required>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Matric No*</label>
+                                            <input class="mb-0" type="text" id="matricNo" name="matricNo" placeholder="Matric No" required>
+                                            @error('matricNo')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6 mb-20">
                                             <label>Password</label>
-                                            <input class="mb-0" type="password" placeholder="Password">
+                                            <input class="mb-0" type="password" id="password" name="password" placeholder="Password" required>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6 mb-20">
                                             <label>Confirm Password</label>
-                                            <input class="mb-0" type="password" placeholder="Confirm Password">
+                                            <input class="mb-0" type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                                            @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
-                                            <button class="register-button mt-0">Register</button>
+                                            <button type="submit" class="register-button mt-0">Register</button>
                                         </div>
                                     </div>
                                 </div>

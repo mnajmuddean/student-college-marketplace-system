@@ -51,6 +51,18 @@
                                                 </ul>
                                             </div>
                                         </li>
+
+                                        
+
+                                        @auth
+                                        <a href="{{  route('login')  }}" class="text-white active px-2"><i class="icon fa fa-user"></i>User Profile</a></li>
+
+                                        @else 
+                                        <a href="{{  route('login')  }}" class="text-white active"><i class="icon fa fa-user">Login/Register</a></li>
+
+                                        @endauth
+
+                                        
                                         <!-- Language Area End Here -->
                                     </ul>
                                 </div>
@@ -66,8 +78,9 @@
                         <div class="row">
                             <!-- Begin Header Logo Area -->
                             <div class="col-lg-3">
-                                <div class="logo w-1 h-1">
-                                <img src="{{ asset('logo/ujscms-high-resolution-logo-transparent-background.png')}}" style="width:30%; height:30%">
+                                <div class="logo"> <a href="{{   url('/')    }}">
+                                <img  src="{{ asset('logo/ujscms-high-resolution-logo-transparent-background.png')}}" style="width:20%; height:20%"> 
+                            </a>
                                 </div>
                             </div>
                             <!-- Header Logo Area End Here -->

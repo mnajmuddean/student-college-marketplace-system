@@ -1,60 +1,111 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+@extends('frontend.main_master')
+@section('content')
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Login Register</li>
+                        </ul>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Login Content Area -->
+            <div class="page-section mb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                            <!-- Login Form s-->
+                            <form method="POST" action="{{  isset($guard) ? url($guard.'/login') : route('login')  }}">
+                             @csrf
+                                <div class="login-form">
+                                    <h4 class="login-title">Login</h4>
+                                    <div class="row">
+                                        <div class="col-md-12 col-12 mb-20">
+                                            <label>Email Address*</label>
+                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address" required>
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label>Password</label>
+                                            <input class="mb-0" type="password" id="password" name="password"placeholder="Password" required>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
+                                                <input type="checkbox" id="remember_me">
+                                                <label for="remember_me">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
+                                            <a href="{{ route('password.request')}}"> Forget Password?</a>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="register-button mt-0" type="submit">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                        <form method="POST" action="{{ route('register') }}">
+                         @csrf
+
+                                <div class="login-form">
+                                    <h4 class="login-title">Register</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Full Name</label>
+                                            <input class="mb-0" type="text" id="name" name="name" placeholder="Full Name" required>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Email Address*</label>
+                                            <input class="mb-0" type="email" id="email" name="email" placeholder="Email Address" required>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <label>Matric No*</label>
+                                            <input class="mb-0" type="text" id="matricNo" name="matricNo" placeholder="Matric No" required>
+                                            @error('matricNo')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mb-20">
+                                            <label>Password</label>
+                                            <input class="mb-0" type="password" id="password" name="password" placeholder="Password" required>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mb-20">
+                                            <label>Confirm Password</label>
+                                            <input class="mb-0" type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                                            @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="register-button mt-0">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+@endsection

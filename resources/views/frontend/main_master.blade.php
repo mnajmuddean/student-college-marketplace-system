@@ -40,6 +40,8 @@
         <link rel="stylesheet" href="{{ asset('/frontend/style.css')    }}">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('/frontend/css/responsive.css')   }}">
+        <!-- Bootstrap icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <!-- Modernizr js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
