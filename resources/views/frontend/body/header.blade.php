@@ -55,10 +55,10 @@
                                         
 
                                         @auth
-                                        <a href="{{  route('login')  }}" class="text-white active px-2"><i class="icon fa fa-user"></i>User Profile</a></li>
+                                        <a href="{{  route('login')  }}" class="text-white active pxhp-2">User Profile</a></li>
 
                                         @else 
-                                        <a href="{{  route('login')  }}" class="text-white active"><i class="icon fa fa-user">Login/Register</a></li>
+                                        <a href="{{  route('login')  }}" class="text-white active">Login/Register</a></li>
 
                                         @endauth
 
