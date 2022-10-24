@@ -55,7 +55,7 @@
                                         
 
                                         @auth
-                                        <a href="{{  route('login')  }}" class="text-white active pxhp-2">User Profile</a></li>
+                                        <a href="{{  route('login')  }}" class="text-white active pxhp-2">My Profile</a></li>
 
                                         @else 
                                         <a href="{{  route('login')  }}" class="text-white active">Login/Register</a></li>
