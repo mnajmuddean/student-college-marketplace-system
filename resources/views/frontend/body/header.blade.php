@@ -78,8 +78,8 @@
                         <div class="row">
                             <!-- Begin Header Logo Area -->
                             <div class="col-lg-3">
-                                <div class="logo"> <a href="{{   url('/')    }}">
-                                <img  src="{{ asset('logo/ujscms-high-resolution-logo-transparent-background.png')}}" style="width:20%; height:20%"> 
+                                <!-- <div class="logo"> <a href="{{   url('/')    }}">
+                                <img  src="{{ asset('logo/ujscms-high-resolution-logo-transparent-background.png')}}" style="width:20%; height:20%">  -->
                             </a>
                                 </div>
                             </div>

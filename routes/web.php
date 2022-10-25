@@ -53,3 +53,6 @@ Route::middleware([
 });
 
 Route::get('/', [UserController::class, 'index']);
+
+Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');

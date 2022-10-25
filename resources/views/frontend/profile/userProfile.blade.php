@@ -23,8 +23,8 @@
               <h5 class="text-center mt-10">{{ Auth::user()->name }}</h5>
               <h5 class="text-center mt-10">Web Designer</h5>
               <ul class="list-group list-group-flush align-items-center mt-20">
-                <a href="{{ route('user.profile')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Home</a>
-                <a href="#" class="btn btn-primary btn-sm btn-block" style="width:50%">Update Profile</a>
+                <a href="" class="btn btn-primary btn-sm btn-block" style="width:50%">Home</a>
+                <a href="{{ route('user.profile')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Update Profile</a>
                 <a href="#" class="btn btn-primary btn-sm btn-block" style="width:50%">Change Password</a>
                 <a href="{{ route('user.logout')}}" class="btn btn-danger btn-sm btn-block" style="width:50%">Logout</a>
               <ul>

@@ -19,7 +19,7 @@
                             <!-- Login Form s-->
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
-                                <div class="login-form">
+                                <div class="login-form mt-20">
                                     <h4 class="login-title">Forgot Password</h4>
                                     <div class="row">
                                         <div class="col-md-12 col-12 mb-20">

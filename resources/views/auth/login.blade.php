@@ -19,7 +19,7 @@
                             <!-- Login Form s-->
                             <form method="POST" action="{{  isset($guard) ? url($guard.'/login') : route('login')  }}">
                              @csrf
-                                <div class="login-form">
+                                <div class="login-form mt-20">
                                     <h4 class="login-title">Login</h4>
                                     <div class="row">
                                         <div class="col-md-12 col-12 mb-20">
@@ -50,7 +50,7 @@
                         <form method="POST" action="{{ route('register') }}">
                          @csrf
 
-                                <div class="login-form">
+                                <div class="login-form mt-20">
                                     <h4 class="login-title">Register</h4>
                                     <div class="row">
                                         <div class="col-md-6 col-12 mb-20">

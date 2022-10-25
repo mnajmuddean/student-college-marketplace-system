@@ -4,12 +4,28 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
 
     public function index(){
         return view('frontend.index');
+    }
+
+
+    public function UserLogout(){
+        Auth::logout();
+
+        return redirect()->route('login');
+    }
+
+    public function UserProfile(){
+        $id = Auth::user()->id;
+        $user = User::find($id);
+
+        return view('frontend.profile.userProfile',compact('user'));
     }
     //
 }
