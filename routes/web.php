@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -42,13 +43,10 @@ Route::post('update/change/password', [AdminProfileController::class, 'AdminUpda
 
 // All User Routes
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+Route::middleware([ 'auth:sanctum',   config('jetstream.auth_session'), 'verified'])->group(function () {
+    $id = Auth::user()->id;
+    $user = User::find($id);
+    Route::get('/dashboard', function () {return view('dashboard',compact('user'));
     })->name('dashboard');
 });
 
@@ -56,3 +54,4 @@ Route::get('/', [UserController::class, 'index']);
 
 Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
 Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
+Route::post('/user/profile/edit', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
