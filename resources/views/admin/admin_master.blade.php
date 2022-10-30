@@ -63,7 +63,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ 
   <script src="{{ asset('/backend/vendor/apexcharts/apexcharts.min.js') }}"></script> 
   <script src="{{ asset('/backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('/backend/vendor/chart.js/chart.min.js') }}"></script> 
@@ -75,7 +75,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('/backend/js/main.js')}}"></script> 
-  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
   <script>
     @if(Session::has('message'))

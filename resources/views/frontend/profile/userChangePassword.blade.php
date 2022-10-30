@@ -1,5 +1,8 @@
 @extends('frontend.main_master')
 @section('content')
+<!-- @php
+$user = DB::table('users')->where('id', Auth::user()->id)->first();
+@endphp -->
 
 <main id="main" class="main">
 
@@ -78,41 +81,32 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
           <div class="card-body pt-3 mt-20" >
                   <!-- Profile Edit Form -->
-                  <form class="card-body pt-3 mt-20" method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
+                  <form class="card-body pt-3 mt-20" method="post" action="{{ route('user.updatePassword')}}" >
                     @csrf
+
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                      <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{{ (!empty($user->profile_photo_path))? url('upload/userImages/'.$user->profile_photo_path):url('upload/no_image.png') }}"  style="height:60% ; width: 40%" alt="Profile">
-                        <div class="pt-2">
-                          <input class="form-control" type="file" id="image" name="profile_photo_path">
-                        </div>
+                        <input name="oldpassword" type="password" class="form-control" id="current_password">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <label for="password" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="name" type="text" class="form-control" id="name" value="{{ $user->name }}">
+                        <input name="password" type="password" class="form-control" id="password">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Matric No</label>
+                      <label for="password_confirmation" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="matricNo" type="text" class="form-control" id="matricNo" value="{{ $user->matricNo }}">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
+                        <input name="password_confirmation" type="password" class="form-control" id="password_confirmation">
                       </div>
                     </div>
 
                     <div class="form-group text-center">
-                      <button type="submit" class="btn btn-danger">Update</button>
+                      <button type="submit" class="btn btn-danger">Change Password</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 
