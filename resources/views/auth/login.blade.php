@@ -53,7 +53,7 @@
                                 <div class="login-form mt-20">
                                     <h4 class="login-title">Register</h4>
                                     <div class="row">
-                                        <div class="col-md-6 col-12 mb-20">
+                                        <div class="col-md-12 mb-20">
                                             <label>Full Name</label>
                                             <input class="mb-0" type="text" id="name" name="name" placeholder="Full Name" required>
                                             @error('name')
