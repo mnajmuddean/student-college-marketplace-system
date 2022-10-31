@@ -23,6 +23,10 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    //Rename table user to student
+    protected $table = 'student';
+
     protected $fillable = [
         'name',
         'email',
