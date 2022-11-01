@@ -53,13 +53,13 @@
         <!-- Begin Body Wrapper -->
         <div class="body-wrapper">
             <!-- Begin Header Area -->
-            @include('frontend.body.header')
+            @include('student.body.header')
             <!-- Header Area End Here -->
             <!-- Begin Slider With Banner Area -->
             @yield('content')
             <!-- Group Featured Product Area End Here -->
             <!-- Begin Footer Area -->
-             @include('frontend.body.footer')
+             @include('student.body.footer')
             <!-- Quick View | Modal Area End Here -->
         </div>
         <!-- Body Wrapper End Here -->

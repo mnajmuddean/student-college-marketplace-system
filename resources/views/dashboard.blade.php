@@ -1,4 +1,4 @@
-@extends('frontend.main_master')
+@extends('student.main_master')
 @section('content')
 
 <main id="main" class="main">
@@ -25,45 +25,40 @@
                   <h5 class="card-title text-center">Profile Details</h5>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label ">Name : </div>
+                    <div class="col-lg-4 col-md-4 label ">Name: </div>
                     <div class="col-lg-8 col-md-8">{{ Auth::user()->name }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Matric No : </div>
-                    <div class="col-lg-8 col-md-8">{{ Auth::user()->matricNo }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Email : </div>
+                    <div class="col-lg-4 col-md-4 label">Email: </div>
                     <div class="col-lg-8 col-md-8">{{ Auth::user()->email }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Country : </div>
-                    <div class="col-lg-8 col-md-8">USA</div>
+                    <div class="col-lg-4 col-md-4 label">Matric No: </div>
+                    <div class="col-lg-8 col-md-8">{{ Auth::user()->matricNo }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Address : </div>
-                    <div class="col-lg-8 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                    <div class="col-lg-4 col-md-4 label">Phone No: </div>
+                    <div class="col-lg-8 col-md-8">{{ Auth::user()->phoneNo }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Phone : </div>
-                    <div class="col-lg-8 col-md-8">(436) 486-3538 x29071</div>
+                    <div class="col-lg-4 col-md-4 label">Student Course: </div>
+                    <div class="col-lg-8 col-md-8">{{ Auth::user()->studCourse }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 label">Email : </div>
-                    <div class="col-lg-8 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-4 col-md-4 label">Room No: </div>
+                    <div class="col-lg-8 col-md-8">{{ Auth::user()->roomNo }}</div>
                   </div>
 
                   <ul class="list-group list-group-flush align-items-center mt-20">
                   <a href="{{ route('dashboard')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Home</a>
-                    <a href="{{ route('user.profile')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Update Profile</a>
-                    <a href="{{ route('user.changePassword')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Change Password</a>
-                    <a href="{{ route('user.logout')}}" class="btn btn-danger btn-sm btn-block" style="width:50%">Logout</a>
+                    <a href="{{ route('student.profile')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Update Profile</a>
+                    <a href="{{ route('student.changePassword')}}" class="btn btn-primary btn-sm btn-block" style="width:50%">Change Password</a>
+                    <a href="{{ route('student.logout')}}" class="btn btn-danger btn-sm btn-block" style="width:50%">Logout</a>
                   <ul>
               </div>
               

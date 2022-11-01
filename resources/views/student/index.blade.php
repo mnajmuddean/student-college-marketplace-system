@@ -1,4 +1,4 @@
-@extends('frontend.main_master')
+@extends('student.main_master')
 @section('content')
 <div class="slider-with-banner">
                 <div class="container">
@@ -1798,7 +1798,7 @@
                         </div>
                         
                         <!-- Start Brand -->
-                        @include('frontend.body.brands')
+                        @include('student.body.brands')
                         <!-- End Brand -->
 
 </div>

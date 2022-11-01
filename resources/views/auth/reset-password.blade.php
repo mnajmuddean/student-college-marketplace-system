@@ -1,4 +1,4 @@
-@extends('frontend.main_master')
+@extends('student.main_master')
 @section('content')
 <div class="breadcrumb-area">
                 <div class="container">

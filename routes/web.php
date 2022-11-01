@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
 
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +51,11 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function(
     return view('dashboard',compact('user'));
 })->name('dashboard');
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [StudentController::class, 'index']);
 
-Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
-Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
-Route::post('/user/profile/edit', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
+Route::get('/student/logout', [StudentController::class, 'StudentLogout'])->name('student.logout');
+Route::get('/student/profile', [StudentController::class, 'StudentProfile'])->name('student.profile');
+Route::post('/student/profile/edit', [StudentController::class, 'StudentEditProfile'])->name('student.profile.edit');
 
-Route::get('/user/changePassword', [UserController::class, 'UserChangePassword'])->name('user.changePassword');
-Route::post('/user/updatePassword', [UserController::class, 'UserUpdatePassword'])->name('user.updatePassword');
+Route::get('/student/changePassword', [StudentController::class, 'StudentChangePassword'])->name('student.changePassword');
+Route::post('/student/updatePassword', [StudentController::class, 'StudentUpdatePassword'])->name('student.updatePassword');

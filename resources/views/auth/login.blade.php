@@ -1,4 +1,4 @@
-@extends('frontend.main_master')
+@extends('student.main_master')
 @section('content')
 <div class="breadcrumb-area">
                 <div class="container">
@@ -71,10 +71,37 @@
                                             </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-12 mb-20">
+                                        <div class="col-md-6 col-12 mb-20">
                                             <label>Matric No*</label>
                                             <input class="mb-0" type="text" id="matricNo" name="matricNo" placeholder="Matric No" required>
                                             @error('matricNo')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Phone Number*</label>
+                                            <input class="mb-0" type="text" id="phoneNo" name="phoneNo" placeholder="Phone Number" required>
+                                            @error('phoneNo')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Student Course*</label>
+                                            <input class="mb-0" type="text" id="studCourse" name="studCourse" placeholder="Student Course" required>
+                                            @error('studCourse')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{  $message}}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Room Number*</label>
+                                            <input class="mb-0" type="text" id="roomNo" name="roomNo" placeholder="Room Number" required>
+                                            @error('roomNo')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{  $message}}</strong>
                                             </span>

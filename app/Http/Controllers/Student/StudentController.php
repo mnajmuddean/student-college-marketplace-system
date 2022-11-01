@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,32 +8,35 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class StudentController extends Controller
 {
 
     public function index(){
-        return view('frontend.index');
+        return view('student.index');
     }
 
 
-    public function UserLogout(){
+    public function StudentLogout(){
         Auth::logout();
 
         return redirect()->route('login');
     }
 
-    public function UserProfile(){
+    public function StudentProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
 
-        return view('frontend.profile.userProfile',compact('user'));
+        return view('student.profile.userProfile',compact('user'));
     }
 
-    public function UserProfileStore(Request $request){
+    public function StudentEditProfile(Request $request){
         $data = User::find(Auth::user()->id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->matricNo = $request->matricNo;
+        $data->phoneNo = $request->phoneNo;
+        $data->studCourse = $request->studCourse;
+        $data->roomNo = $request->roomNo;
 
         if($request->file('profile_photo_path')) {
             $file = $request->file('profile_photo_path');
@@ -46,20 +49,20 @@ class UserController extends Controller
 
         $notification = array(
 
-            'message' => 'User Profile Successfully Update',
+            'message' => 'Student Profile Successfully Update',
             'alert-type' => 'success'
         );
 
         return redirect()->route('dashboard')->with($notification);
     }
 
-    public function UserChangePassword(){
+    public function StudentChangePassword(){
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('frontend.profile.userChangePassword', compact('user'));
+        return view('student.profile.userChangePassword', compact('user'));
     }
 
-    public function UserUpdatePassword(Request $request){
+    public function StudentUpdatePassword(Request $request){
         $validateData = $request->validate([
             
             'oldpassword' => 'required',
@@ -72,7 +75,7 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
-            return redirect()->route('user.logout');
+            return redirect()->route('student.logout');
         }else{
             return redirect()->back();
         }
