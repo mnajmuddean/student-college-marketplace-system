@@ -5,8 +5,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
-
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Brand\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +52,14 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function(
 })->name('dashboard');
 
 Route::get('/', [StudentController::class, 'index']);
-
 Route::get('/student/logout', [StudentController::class, 'StudentLogout'])->name('student.logout');
 Route::get('/student/profile', [StudentController::class, 'StudentProfile'])->name('student.profile');
 Route::post('/student/profile/edit', [StudentController::class, 'StudentEditProfile'])->name('student.profile.edit');
-
 Route::get('/student/changePassword', [StudentController::class, 'StudentChangePassword'])->name('student.changePassword');
 Route::post('/student/updatePassword', [StudentController::class, 'StudentUpdatePassword'])->name('student.updatePassword');
+
+// All Brand Routes
+
+Route::prefix('brand')->group(function(){
+    Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand');
+});
