@@ -62,4 +62,7 @@ Route::post('/student/updatePassword', [StudentController::class, 'StudentUpdate
 
 Route::prefix('brand')->group(function(){
     Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand');
+    Route::post('/add', [BrandController::class, 'AddBrand'])->name('brand.store');
+    Route::get('/edit/{id}', [BrandController::class, 'EditBrand'])->name('brand.edit');
+    Route::post('/update', [BrandController::class, 'UpdateBrand'])->name('brand.update');
 });
