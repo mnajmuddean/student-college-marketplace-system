@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Category\CategoryController;
-use App\Http\Controllers\SubCategory\SubCategoryController;
+use App\Http\Controllers\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,10 +77,12 @@ Route::prefix('category')->group(function(){
     Route::get('/edit/{id}', [CategoryController::class, 'EditCategory'])->name('category.edit');
     Route::post('/update', [CategoryController::class, 'UpdateCategory'])->name('category.update');
 
-    // All Sub Category Routes
-    Route::get('/subcategory/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
-    Route::post('/sub/add', [SubCategoryController::class, 'AddSubCategory'])->name('subcategory.store');
-    Route::get('/sub/edit/{id}', [SubCategoryController::class, 'EditSubCategory'])->name('subcategory.edit');
+});
+
+// All Product Routes
+
+Route::prefix('product')->group(function(){
+    Route::get('/add', [ProductController::class, 'AddProduct'])->name('add.product');
 
 });
 

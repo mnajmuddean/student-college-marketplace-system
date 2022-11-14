@@ -26,7 +26,7 @@
   <link href="{{ asset('/backend/vendor/quill/quill.bubble.css')}}" rel="stylesheet"> 
   <link href="{{ asset('/backend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">  
   <link href="{{ asset('/backend/vendor/simple-datatables/style.css')}}" rel="stylesheet">  
-  
+  <link href="{{ asset('/backend/vendor/dist/bootstrap-tagsinput.js')}}" rel="stylesheet">  
 
 
   <!-- Template Main CSS File -->
