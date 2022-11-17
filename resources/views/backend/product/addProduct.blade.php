@@ -6,7 +6,8 @@
               <h5 class="card-title">Add Products</h5>
 
               <!-- General Form Elements -->
-              <form>
+              <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data" >
+		 	          @csrf
                 <div class="col-12">
 
                         <div class="row">
@@ -64,54 +65,29 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="productTag" class="col-sm-2 col-form-label">Product Tag</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="productTag" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
                   <label for="productPrice" class="col-sm-2 col-form-label">Product Price</label>
                   <div class="col-sm-10">
                     <input type="text" name="productPrice" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="productDiscountPrice" class="col-sm-2 col-form-label">Product Discount Price</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="productDiscountPrice" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
                   <label for="productDescription" class="col-sm-2 col-form-label">Product Description</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control" style="height: 100px"></textarea>
+                    <textarea class="form-control" style="height: 100px" name="productDescription"></textarea>
                   </div>
                 </div>
-                
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Product Thumbnail</label>
                   <div class="col-sm-10">
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file"  name="productThumbnail">
                   </div>
                 </div>
-
                 <div class="row mb-3">
-                  <legend class="col-form-label col-sm-2 pt-0">Product Status</legend>
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Multiple Images</label>
                   <div class="col-sm-10">
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1">
-                      <label class="form-check-label" for="gridCheck1">
-                        Example checkbox
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck2" checked>
-                      <label class="form-check-label" for="gridCheck2">
-                        Example checkbox 2
-                      </label>
-                    </div>
-
+                    <input class="form-control" type="file" name="multi_img[]" multiple="" >
+                  
+                  <div class="row" id="preview_img"></div>
                   </div>
                 </div>
                 
@@ -126,13 +102,6 @@
           </div>
 
         </div>
-
-        
-
-
-
-            
-
 
 
 @endsection

@@ -50,7 +50,7 @@
             </a>
           </li>
           <li>
-            <a href="tables-general.html">
+            <a href="{{ route('manage.product')}}">
               <i class="bi bi-circle"></i><span>Manage Products</span>
             </a>
           </li>
@@ -61,7 +61,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{ route('admin.profile')  }}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
