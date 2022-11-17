@@ -69,6 +69,35 @@ class ProductController extends Controller
         return view('backend.product.viewProduct',compact('products'));
     }
 
+    public function EditProduct($id){
+
+        $multiImgs = MultipleImage::where('productID',$id)->get();
+
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $products = Product::findOrFail($id);
+        return view('backend.product.editProduct', compact('categories','brands','products','multiImgs'));
+
+    }
+
+    public function UpdateProduct(Request $request){
+        $productID = $request->id;
+        Product::findOrFail($productID)->update([
+            'brandID' => $request->brandID,
+            'categoryID' => $request->categoryID,
+            'productName' => $request->productName,
+            'productCode' => $request->productCode,
+            'productQty' => $request->productQty,
+            'productPrice' => $request->productPrice,
+            'productDescription' => $request->productDescription,
+            'productStatus' =>  1,
+            'created_at' =>  Carbon::now(),
+        ]);
+
+        return redirect()->route('manage.product');
+
+    }
+
 
     //
 }

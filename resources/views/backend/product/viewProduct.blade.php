@@ -33,7 +33,7 @@
                               <td>{{  $item->productPrice}}</td>
                               <td>{{  $item->productDescription}}</td>
                               <td>
-                                <a href="{{ route('category.edit', $item->id ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
+                                <a href="{{ route('product.edit', $item->id ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
                                 <a href="" id="delete" class="btn btn-danger"><i class="bi bi-trash-fill"></i> </a>
                               </td>
                             </tr>
