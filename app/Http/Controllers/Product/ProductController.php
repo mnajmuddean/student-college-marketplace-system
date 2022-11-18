@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Brand;
 use App\Models\MultipleImage;
 use Carbon\Carbon;
 use Image;
@@ -16,8 +15,7 @@ class ProductController extends Controller
 
     public function AddProduct(){
             $categories = Category::latest()->get();
-            $brands = Brand::latest()->get();
-            return view('backend.product.addProduct',compact('categories','brands'));
+            return view('backend.product.addProduct',compact('categories'));
     }
 
     public function StoreProduct(Request $request){
@@ -28,7 +26,6 @@ class ProductController extends Controller
         $save_url = 'upload/productImages/Thumbnail/'.$name_gen;
         
         $productID = Product::insertGetId([
-            'brandID' => $request->brandID,
             'categoryID' => $request->categoryID,
             'productName' => $request->productName,
             'productCode' => $request->productCode,
@@ -74,16 +71,14 @@ class ProductController extends Controller
         $multiImgs = MultipleImage::where('productID',$id)->get();
 
         $categories = Category::latest()->get();
-        $brands = Brand::latest()->get();
         $products = Product::findOrFail($id);
-        return view('backend.product.editProduct', compact('categories','brands','products','multiImgs'));
+        return view('backend.product.editProduct', compact('categories','products','multiImgs'));
 
     }
 
     public function UpdateProduct(Request $request){
         $productID = $request->id;
         Product::findOrFail($productID)->update([
-            'brandID' => $request->brandID,
             'categoryID' => $request->categoryID,
             'productName' => $request->productName,
             'productCode' => $request->productCode,

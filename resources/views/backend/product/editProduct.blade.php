@@ -12,22 +12,8 @@
                 <div class="col-12">
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Choose Brand</label>
-                                    <div class="col-sm-10">
-                                        <select name="brandID" class="form-select" aria-label="Default select example">
-                                        <option selected>Select Brand</option>
-                                        @foreach($brands as $brand)
-                                        <option value="{{ $brand->id }}" {{ $brand->id == $products->brandID ? 'selected' : ''}}> {{  $brand->brandName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                        
-                             </div>
 
-                             <div class="col-md-6">
+                             <div class="col-md-12">
                                 <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Choose Category</label>
                                     <div class="col-sm-10">
@@ -71,10 +57,11 @@
                     <input type="text" name="productPrice" class="form-control" value="{{    $products->productPrice}}">
                   </div>
                 </div>
+                
                 <div class="row mb-3">
                   <label for="productDescription" class="col-sm-2 col-form-label">Product Description</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control" style="height: 100px" name="productDescription" value="{{    $products->productDescription}}"></textarea>
+                    <input type="text" name="productDescription" class="form-control" value="{{    $products->productDescription}}">
                   </div>
                 </div>
                 
@@ -102,19 +89,19 @@
 
         <div class="row">
             <div class="card">
-                <div class="card-header">Multiple Image</div>
+                <div class="card-header">Multiple Image</div> 
                 <div class="card-body">
                     <h5 class="card-title"> Update Product Multiple Image</h5>
                     <form method="" action="" enctype="multipart/form-data">
 
                     <div class="row row-sm">
 
-                        @foreach(   $multiImgs as $image)
+                        @foreach(   $multiImgs as $img)
                         
                         <div class="col-md-3">
 
                         <div class="card">
-                            <img src="{{    asset($image->imageName)  }}" class="card-img-top" style="width: 280px ; height: 130px;">
+                            <img src="{{    asset($img->imageName)  }}" class="card-img-top" style="width: 280px ; height: 130px;">
                             <div class="card-body">
                             <h5 class="card-title">Card with an image on top</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -127,7 +114,7 @@
 
                         @endforeach
 
-            </div>
+                  </div>
             </form>
             </div>
             <div class="card-footer"> Footer</div>

@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
+
 <div class="card">
             <div class="card-body">
               <h5 class="card-title">Add Products</h5>
@@ -11,22 +12,7 @@
                 <div class="col-12">
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Choose Brand</label>
-                                    <div class="col-sm-10">
-                                        <select name="brandID" class="form-select" aria-label="Default select example">
-                                        <option selected>Select Brand</option>
-                                        @foreach($brands as $brand)
-                                        <option value="{{ $brand->id }}" > {{  $brand->brandName}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                        
-                             </div>
-
-                             <div class="col-md-6">
+                             <div class="col-md-12">
                                 <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Choose Category</label>
                                     <div class="col-sm-10">
