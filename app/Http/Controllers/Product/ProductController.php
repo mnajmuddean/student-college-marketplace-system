@@ -57,7 +57,7 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.product');
    
     }
 
@@ -114,6 +114,40 @@ class ProductController extends Controller
         }
         return redirect()->back();
 
+    }
+
+    public function UpdateThumbnailImage(Request $request){
+        $productID = $request->id;
+        $old_image = $request->old_img;
+        unlink($old_image);
+
+        $image = $request->file('productThumbnail');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(917,1000)->save('upload/productImages/Thumbnail/'.$name_gen);
+        $save_url = 'upload/productImages/Thumbnail/'.$name_gen;
+
+        Product::findOrFail($productID)->update([
+            'productThumbnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        return redirect()->back();
+
+
+    }
+
+    public function DeleteMultiImage($id){
+        $old_img = MultipleImage::findOrFail($id);
+        unlink($old_img->imageName);
+
+        MultipleImage::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Image Successfully Delete',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
 

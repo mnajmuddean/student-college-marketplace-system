@@ -90,8 +90,44 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title"> Update Product Thumbnail Image</h5>
+                    <form method="post" action="{{  route('imagethumbnail.update')}}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="id" value="{{  $products->id}}">
+                      <input type="hidden" name="old_img" value="{{ $products->productThumbnail }}">
+                      <div class="row row-sm">
+                        <div class="col-md-3">
+
+                        <div class="card">
+                            <img src="{{  asset( $products->productThumbnail )}}"  style="width: 280px ; height: 130px;">
+                            <div class="card-body">
+                            <p class="card-text">
+                              <div class="form-group">
+                                <label class="form-control-label mb-2">Change Image</label>
+                                <input class="form-control" type="file" name="productThumbnail">
+                          </div>
+                            </p>
+
+                            <a href="" class="btn btn-sm btn-danger sm-20" id="delete" title="Delete Data"><i class="sm-5 bi bi-trash-fill"></i> </a> 
+                          </div>
+                        </div>
+                        </div>
+
+                  </div>
+                  <div class="card-footer text-center">
+                    <input type="submit" class="btn btn-primary" value="Update Image" ></button>
+                    </div>
+            </form>
+            </div>
+
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
                     <h5 class="card-title"> Update Product Multiple Image</h5>
-                    <form method="post" action="{{  route('image.update')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{  route('multiimage.update')}}" enctype="multipart/form-data">
                       @csrf
                     <div class="row row-sm">
 
@@ -110,11 +146,7 @@
                                 <input class="form-control" type="file" name="multi_img[ {{ $img ->id }} ]">
                           </div>
                             </p>
-
-                            <a href="" class="btn btn-sm btn-danger sm-20" id="delete" title="Delete Data"><i class="sm-5 bi bi-trash-fill"></i> </a>
-
-                           
-                           
+                            <a href="{{ route('multiimage.delete' , $img->id)}}" class="btn btn-sm btn-danger sm-20" id="delete" title="Delete Data"><i class="sm-5 bi bi-trash-fill"></i> </a>
                           </div>
                         </div>
 
