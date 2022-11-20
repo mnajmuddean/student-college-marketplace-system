@@ -54,6 +54,7 @@
   <main id="main" class="main">
 
     @yield('admin')
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

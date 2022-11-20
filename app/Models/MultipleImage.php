@@ -9,5 +9,5 @@ class MultipleImage extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 }

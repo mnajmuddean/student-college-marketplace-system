@@ -39,8 +39,8 @@ class ProductController extends Controller
 
         $images = $request->file('multi_img');
         foreach ($images as $img){
-            $make_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($img)->resize(917,1000)->save('upload/productImages/multiImage/'.$name_gen);
+            $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('upload/productImages/multiImage/'.$make_name);
             $uploadPath = 'upload/productImages/multiImage/'.$make_name;
 
             MultipleImage::insert([
@@ -63,16 +63,16 @@ class ProductController extends Controller
 
     public function ManageProduct(){
         $products = Product::latest()->get();
-        return view('backend.product.viewProduct',compact('products'));
+        $categories = Category::latest()->get();
+        return view('backend.product.viewProduct',compact('products','categories'));
     }
 
     public function EditProduct($id){
-
-        $multiImgs = MultipleImage::where('productID',$id)->get();
-
+        $multiple_images = MultipleImage::where('productID',$id)->get();
         $categories = Category::latest()->get();
         $products = Product::findOrFail($id);
-        return view('backend.product.editProduct', compact('categories','products','multiImgs'));
+        
+        return view('backend.product.editProduct', compact('categories','products','multiple_images'));
 
     }
 
@@ -90,6 +90,29 @@ class ProductController extends Controller
         ]);
 
         return redirect()->route('manage.product');
+
+    }
+
+    public function UpdateMultiImage(Request $request){
+
+        $imgs = $request->multi_img;
+
+		foreach ($imgs as $id => $img) {
+	    $imgDel = MultipleImage::findOrFail($id);
+	    unlink($imgDel->imageName);
+
+    	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+    	Image::make($img)->resize(917,1000)->save('upload/productImages/multiImage/'.$make_name);
+    	$uploadPath = 'upload/productImages/multiImage/'.$make_name;
+
+        MultipleImage::where('id',$id)->update([
+            'imageName' => $uploadPath,
+            'updated_at' => Carbon::now(),
+        ]);
+
+    	
+        }
+        return redirect()->back();
 
     }
 

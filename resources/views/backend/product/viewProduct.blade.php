@@ -14,6 +14,7 @@
                           <thead>
                             <tr>
                               <th scope="col">Product Image</th>
+                              <th scope="col">Product Category</th>
                               <th scope="col">Product Name</th>
                               <th scope="col">Product Code</th>
                               <th scope="col">Product Quantity</th>
@@ -27,6 +28,7 @@
                           @foreach($products as $item)
                             <tr>
                               <td> <img src="{{ asset($item->productThumbnail) }}" style="width:60 px; height:60px"></td>
+                              <td> {{ $item['category']['categoryName'] }}  </td>
                               <td>{{  $item->productName}}</td>
                               <td>{{  $item->productCode}}</td>
                               <td>{{  $item->productQty}}</td>
@@ -38,6 +40,7 @@
                               </td>
                             </tr>
                             @endforeach
+
                           </tbody>
                         </table>
                             

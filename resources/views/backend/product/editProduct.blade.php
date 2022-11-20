@@ -67,8 +67,8 @@
                 
                 
 
-                <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Update Product" ></button>
+                <div class="card-footer text-center">
+                    <input type="submit" class="btn btn-primary " value="Update Product" ></button>
                     </div>
 
               </form><!-- End General Form Elements -->
@@ -89,23 +89,33 @@
 
         <div class="row">
             <div class="card">
-                <div class="card-header">Multiple Image</div> 
                 <div class="card-body">
                     <h5 class="card-title"> Update Product Multiple Image</h5>
-                    <form method="" action="" enctype="multipart/form-data">
-
+                    <form method="post" action="{{  route('image.update')}}" enctype="multipart/form-data">
+                      @csrf
                     <div class="row row-sm">
 
-                        @foreach(   $multiImgs as $img)
+                        @foreach(   $multiple_images as $img)
                         
                         <div class="col-md-3">
 
                         <div class="card">
-                            <img src="{{    asset($img->imageName)  }}" class="card-img-top" style="width: 280px ; height: 130px;">
+                            <img src="{{  asset( $img->imageName )}}"  style="width: 280px ; height: 130px;">
                             <div class="card-body">
-                            <h5 class="card-title">Card with an image on top</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
+                              
+                              
+                            <p class="card-text">
+                              <div class="form-group">
+                                <label class="form-control-label mb-2">Change Image</label>
+                                <input class="form-control" type="file" name="multi_img[ {{ $img ->id }} ]">
+                          </div>
+                            </p>
+
+                            <a href="" class="btn btn-sm btn-danger sm-20" id="delete" title="Delete Data"><i class="sm-5 bi bi-trash-fill"></i> </a>
+
+                           
+                           
+                          </div>
                         </div>
 
 
@@ -113,11 +123,12 @@
                         </div>
 
                         @endforeach
-
                   </div>
+                  <div class="card-footer text-center">
+                    <input type="submit" class="btn btn-primary" value="Update Image" ></button>
+                    </div>
             </form>
             </div>
-            <div class="card-footer"> Footer</div>
 
             </div>
             </div>
