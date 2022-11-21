@@ -93,6 +93,20 @@ class ProductController extends Controller
 
     }
 
+    public function DeleteProduct($id){
+        $product = Product::findOrFail($id);
+        unlink($product->productThumbnail);
+        Product::findOrFail($id)->delete();
+
+        $images = MultipleImage::where('productID',$id)->get();
+        foreach($images as $img){
+            unlink($img->imageName);
+            MultipleImage::where('productID',$id)->delete();
+        }
+
+        return redirect()->back();
+    }
+
     public function UpdateMultiImage(Request $request){
 
         $imgs = $request->multi_img;
@@ -150,6 +164,17 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    public function InactiveProduct($id){
+        Product::findOrFail($id)->update(['productStatus' => 0]);
 
+        return redirect()->back();
+
+    }
+
+    public function ActiveProduct($id){
+        Product::findOrFail($id)->update(['productStatus' => 1]);
+
+        return redirect()->back();
+    }
     //
 }
