@@ -6,13 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\MultipleImage;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
 
     public function index(){
-        return view('student.index');
+
+        $categories = Category::orderBy('categoryName','ASC')->get();
+        $products = Product::orderBy('productName','ASC')->get();
+        return view('student.index',compact('categories','products'));
     }
 
 
@@ -79,6 +85,12 @@ class StudentController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+
+    public function productDetails($id){
+        $product = Product::findOrFail($id);
+        $multiImage = MultipleImage::where('productID',$id)->get();
+        return view('student.product.productDetails',compact('product','multiImage'));
     }
     //
 }

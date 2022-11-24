@@ -97,6 +97,10 @@ Route::prefix('product')->group(function(){
 });
 
 
+//All Product Routes
+
+Route::get('/product/details/{id}', [StudentController::class, 'productDetails']);
+
 
 
 
