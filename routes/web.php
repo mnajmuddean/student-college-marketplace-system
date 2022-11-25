@@ -74,9 +74,9 @@ Route::prefix('brand')->group(function(){
 Route::prefix('category')->group(function(){
     Route::get('/category', [CategoryController::class, 'CategoryView'])->name('all.category');
     Route::post('/add', [CategoryController::class, 'AddCategory'])->name('category.store');
-    Route::get('/edit/{id}', [CategoryController::class, 'EditCategory'])->name('category.edit');
-    Route::post('/update', [CategoryController::class, 'UpdateCategory'])->name('category.update');
-    Route::get('/delete/{id}', [CategoryController::class, 'DeleteCategory'])->name('category.delete');
+    Route::get('/edit/{categoryID}', [CategoryController::class, 'EditCategory'])->name('category.edit');
+    Route::post('/update/{categoryID}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
+    Route::get('/delete/{categoryID}', [CategoryController::class, 'DeleteCategory'])->name('category.delete');
 
 });
 
@@ -86,14 +86,14 @@ Route::prefix('product')->group(function(){
     Route::get('/add', [ProductController::class, 'AddProduct'])->name('add.product');
     Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product.store');
     Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage.product');
-    Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
-    Route::post('/update', [ProductController::class, 'UpdateProduct'])->name('product.update');
-    Route::get('/delete/{id}', [ProductController::class, 'DeleteProduct'])->name('product.delete');
+    Route::get('/edit/{productID}', [ProductController::class, 'EditProduct'])->name('product.edit');
+    Route::post('/update/{productID}', [ProductController::class, 'UpdateProduct'])->name('product.update');
+    Route::get('/delete/{productID}', [ProductController::class, 'DeleteProduct'])->name('product.delete');
     Route::post('/multi-image/update', [ProductController::class, 'UpdateMultiImage'])->name('multiimage.update');
-    Route::post('/image-thumbnail/update', [ProductController::class, 'UpdateThumbnailImage'])->name('imagethumbnail.update');
-    Route::get('/multi-image/delete/{id}', [ProductController::class, 'DeleteMultiImage'])->name('multiimage.delete');
-    Route::get('/inactive/{id}', [ProductController::class, 'InactiveProduct'])->name('product.inactive');
-    Route::get('/active/{id}', [ProductController::class, 'ActiveProduct'])->name('product.active');
+    Route::post('/image-thumbnail/update/{productID}', [ProductController::class, 'UpdateThumbnailImage'])->name('imagethumbnail.update');
+    Route::get('/multi-image/delete/{productID}', [ProductController::class, 'DeleteMultiImage'])->name('multiimage.delete');
+    Route::get('/inactive/{productID}', [ProductController::class, 'InactiveProduct'])->name('product.inactive');
+    Route::get('/active/{productID}', [ProductController::class, 'ActiveProduct'])->name('product.active');
 });
 
 

@@ -67,17 +67,17 @@ class ProductController extends Controller
         return view('backend.product.viewProduct',compact('products','categories'));
     }
 
-    public function EditProduct($id){
-        $multiple_images = MultipleImage::where('productID',$id)->get();
+    public function EditProduct($productID){
+        $multiple_images = MultipleImage::where('productID',$productID)->get();
         $categories = Category::latest()->get();
-        $products = Product::findOrFail($id);
+        $products = Product::findOrFail($productID);
         
         return view('backend.product.editProduct', compact('categories','products','multiple_images'));
 
     }
 
-    public function UpdateProduct(Request $request){
-        $productID = $request->id;
+    public function UpdateProduct(Request $request, $productID){
+        
         Product::findOrFail($productID)->update([
             'categoryID' => $request->categoryID,
             'productName' => $request->productName,
@@ -93,15 +93,15 @@ class ProductController extends Controller
 
     }
 
-    public function DeleteProduct($id){
-        $product = Product::findOrFail($id);
+    public function DeleteProduct($productID){
+        $product = Product::findOrFail($productID);
         unlink($product->productThumbnail);
-        Product::findOrFail($id)->delete();
+        Product::findOrFail($productID)->delete();
 
-        $images = MultipleImage::where('productID',$id)->get();
+        $images = MultipleImage::where('productID',$productID)->get();
         foreach($images as $img){
             unlink($img->imageName);
-            MultipleImage::where('productID',$id)->delete();
+            MultipleImage::where('productID',$productID)->delete();
         }
 
         return redirect()->back();
@@ -130,8 +130,8 @@ class ProductController extends Controller
 
     }
 
-    public function UpdateThumbnailImage(Request $request){
-        $productID = $request->id;
+    public function UpdateThumbnailImage(Request $request, $productID){
+        
         $old_image = $request->old_img;
         unlink($old_image);
 
@@ -164,15 +164,15 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function InactiveProduct($id){
-        Product::findOrFail($id)->update(['productStatus' => 0]);
+    public function InactiveProduct($productID){
+        Product::findOrFail($productID)->update(['productStatus' => 0]);
 
         return redirect()->back();
 
     }
 
-    public function ActiveProduct($id){
-        Product::findOrFail($id)->update(['productStatus' => 1]);
+    public function ActiveProduct($productID){
+        Product::findOrFail($productID)->update(['productStatus' => 1]);
 
         return redirect()->back();
     }

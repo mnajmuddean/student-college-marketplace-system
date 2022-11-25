@@ -14,7 +14,7 @@
     </div><!-- End Page Title -->
 
     <div class="row">
-        <div class="col-xl-4">
+        <div class="col-xl-4 mb-20">
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
@@ -22,10 +22,11 @@
             <h5 class="mt-20">{{ Auth::user()->name }}</h5>
             <h5>{{ Auth::user()->matricNo }}</h5>
             <div class="btn-group mt-20" role="group" aria-label="Basic example">
-              <a href="{{ route('dashboard')}}"  type="button" class="btn btn-outline-primary">Home</a>
-              <a href="{{ route('student.profile')}}"  type="button" class="btn btn-outline-primary">Update Profile</a>
-              <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-outline-primary">Change Password</a>
-              <a href="{{ route('student.logout')}}" type="button" class="btn btn-outline-danger">Logout</a>
+              <a href="{{ route('dashboard')}}"  type="button" class="btn btn-primary">Home</a>
+              <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary">Add Product</a>
+              <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary">Update Profile</a>
+              <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary">Change Password</a>
+              <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger">Logout</a>
             </div>  
             </div>
           </div>

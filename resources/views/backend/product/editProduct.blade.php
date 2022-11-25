@@ -6,10 +6,13 @@
               <h5 class="card-title">Edit Products</h5>
 
               <!-- General Form Elements -->
-              <form method="post" action="{{ route('product.update') }}">
+              <form method="post" action="{{ route('product.update', $products->productID) }}">
 		 	          @csrf
-                      <input type="hidden" name="id" value="{{  $products->id}}">
-                <div class="col-12">
+
+                
+                      <input type="hidden" name="productID" value="{{  $products->productID}}">
+                
+                      <div class="col-12">
 
                         <div class="row">
 
@@ -20,7 +23,7 @@
                                         <select name="categoryID" class="form-select" aria-label="Default select example">
                                         <option selected>Select Category</option>
                                         @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $products->categoryID ? 'selected' : ''}} > {{  $category->categoryName}}</option>
+                                        <option value="{{ $category->categoryID }}" {{ $category->categoryID == $products->categoryID ? 'selected' : ''}} > {{  $category->categoryName}}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -91,9 +94,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Update Product Thumbnail Image</h5>
-                    <form method="post" action="{{  route('imagethumbnail.update')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{  route('imagethumbnail.update',  $products->productID )}}" enctype="multipart/form-data">
                       @csrf
-                      <input type="hidden" name="id" value="{{  $products->id}}">
+                      <input type="hidden" name="productID" value="{{  $products->productID}}">
                       <input type="hidden" name="old_img" value="{{ $products->productThumbnail }}">
                       <div class="row row-sm">
                         <div class="col-md-3">

@@ -35,15 +35,15 @@ class CategoryController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function EditCategory($id){
-        $category = Category::findOrFail($id);
+    public function EditCategory($categoryID){
+        
+        $category = Category::findOrFail($categoryID);
         return view('backend.category.editCategory', compact('category'));
     }
 
-    public function UpdateCategory(Request $request){
-        $category_id = $request->id;
-
-        Category::findOrFail($category_id)->update([
+    public function UpdateCategory(Request $request, $categoryID){
+       
+        Category::find($categoryID)->update([
             'categoryName' => $request->categoryName,
             'categoryImage' => $request->categoryImage,
         ]);
@@ -58,8 +58,8 @@ class CategoryController extends Controller
     }
 
     
-    public function DeleteCategory($id){
-        Category::findOrFail($id)->delete();
+    public function DeleteCategory($categoryID){
+        Category::findOrFail($categoryID)->delete();
 
         return redirect()->back();
 

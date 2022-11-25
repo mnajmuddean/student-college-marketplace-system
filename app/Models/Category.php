@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'categoryID';
+
     protected $fillable = [
         'categoryName',
         'categoryImage',

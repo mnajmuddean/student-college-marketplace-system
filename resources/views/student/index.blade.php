@@ -96,7 +96,7 @@ Home - UiTM Jasin Student College Marketplace System
                                        
                                         <div class="single-product-wrap">
                                             <div class="product-image">
-                                                <a href="{{ url('product/details/'.$product->id)  }}">
+                                                <a href="{{ url('product/details/'.$product->productID)  }}">
                                                     <img src="{{ asset($product->productThumbnail)}}" alt="Li's Product Image">
                                                 </a>
                                                 <span class="sticker">New</span>
@@ -117,7 +117,7 @@ Home - UiTM Jasin Student College Marketplace System
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h4><a class="product_name" href="{{ url('product/details/'.$product->id)  }}">{{ $product->productName}}</a></h4>
+                                                    <h4><a class="product_name" href="{{ url('product/details/'.$product->productID)  }}">{{ $product->productName}}</a></h4>
                                                     <div class="price-box">
                                                         <span class="new-price">RM {{  $product->productPrice}}</span>
                                                     </div>
@@ -1558,10 +1558,10 @@ Home - UiTM Jasin Student College Marketplace System
                         </div>
                         
                         <!-- Start Brand -->
-                        @include('student.body.brands')
+                       
                         <!-- End Brand -->
 
-</div>
+                    </div>
                                 
 
                         

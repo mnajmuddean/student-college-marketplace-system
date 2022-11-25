@@ -44,15 +44,15 @@
                                 @endif
                               </td>
                               <td>
-                                <a href="{{ route('product.edit', $item->id ) }}" class="btn btn-primary" title="Product Status"><i class="bi bi-eye-fill"></i> </a>
-                                <a href="{{ route('product.edit', $item->id ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
+                                <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary" title="Product Status"><i class="bi bi-eye-fill"></i> </a>
+                                <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="bi bi-trash-fill"></i></a>
                                 
                                 @if(  $item->productStatus == 1)
-                                <a href="{{ route('product.inactive', $item->id ) }}" class="btn btn-danger" title="Inactive Now"><i class="bi bi-file-arrow-down"></i> </a>
+                                <a href="{{ route('product.inactive', $item->productID ) }}" class="btn btn-danger" title="Inactive Now"><i class="bi bi-file-arrow-down"></i> </a>
 
                                 @else
-                                <a href="{{ route('product.active', $item->id ) }}" class="btn btn-success" title="Active Now"><i class="bi bi-file-arrow-up"></i> </a>
+                                <a href="{{ route('product.active', $item->productID ) }}" class="btn btn-success" title="Active Now"><i class="bi bi-file-arrow-up"></i> </a>
                                
                                 @endif
                                   <div class="modal fade" id="verticalycentered" tabindex="-1">
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="modal-footer align-item-center">
                                           <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
-                                          <a type="button" class="btn btn-primary" href="{{ route('product.delete' , $item->id)}}">Yes, delete it!</a>
+                                          <a type="button" class="btn btn-primary" href="{{ route('product.delete' , $item->productID)}}">Yes, delete it!</a>
                                         </div>
                                       </div>
                                     </div>

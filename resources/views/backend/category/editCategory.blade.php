@@ -8,10 +8,10 @@
                 <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Edit Category</h5>
-                  <form method="post" action="{{ route('category.update',$category->id)  }}">
+                  <form method="post" action="{{ route('category.update',$category->categoryID)  }}">
                     @csrf
 
-                    <input type="hidden" name="id" value="{{    $category->id}}">
+                    <input type="hidden" name="id" value="{{    $category->categoryID}}">
 
                     <div class="row mb-3">
                     <label for="categoryName" class="col-md-4 col-lg-3 col-form-label">Category Name</label>

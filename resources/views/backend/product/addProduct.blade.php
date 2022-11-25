@@ -19,7 +19,7 @@
                                         <select name="categoryID" class="form-select" aria-label="Default select example">
                                         <option selected>Select Category</option>
                                         @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" > {{  $category->categoryName}}</option>
+                                        <option value="{{ $category->categoryID }}" > {{  $category->categoryName}}</option>
                                         @endforeach
                                         </select>
                                     </div>
