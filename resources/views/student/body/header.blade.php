@@ -1,3 +1,5 @@
+
+
 <header class="li-header-4">
                 <!-- Begin Header Top Area -->
                 <div class="header-top">
@@ -231,7 +233,7 @@
                                             @endphp
 
                                             @foreach($categories as $category)
-                                            <li class=""><a href="shop-left-sidebar.html">{{ $category->categoryName}}</a>
+                                            <li class=""><a href="{{url('category/product/'.$category->id.'/'.$category->categoryName)}}">{{ $category->categoryName}}</a>
                                                 
                                             </li>
 

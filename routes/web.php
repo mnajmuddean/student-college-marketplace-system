@@ -100,7 +100,7 @@ Route::prefix('product')->group(function(){
 //All Product Routes
 
 Route::get('/product/details/{id}', [StudentController::class, 'productDetails']);
-
+Route::get('/category/product/{cat_id}', [StudentController::class, 'CategoryWiseProduct']);
 
 
 

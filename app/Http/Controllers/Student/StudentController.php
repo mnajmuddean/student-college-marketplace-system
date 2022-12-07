@@ -18,6 +18,8 @@ class StudentController extends Controller
 
         $categories = Category::orderBy('categoryName','ASC')->get();
         $products = Product::orderBy('productName','ASC')->get();
+
+        
         return view('student.index',compact('categories','products'));
     }
 
@@ -90,7 +92,14 @@ class StudentController extends Controller
     public function productDetails($id){
         $product = Product::findOrFail($id);
         $multiImage = MultipleImage::where('productID',$id)->get();
+       
         return view('student.product.productDetails',compact('product','multiImage'));
+    }
+
+    public function CategoryWiseProduct($cat_id){
+        $products = Product::where('status',1)->where('categoryID',$cat_id)->orderBy('id','DESC')->paginate(3);
+        $categories = Category::orderBy('categoryName','ASC')->get();
+        return view('frontend.category.categoryView',compact('products','categories'));
     }
     //
 }

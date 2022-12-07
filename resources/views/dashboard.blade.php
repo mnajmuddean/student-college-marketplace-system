@@ -6,7 +6,7 @@
     <div class="pagetitle">
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="">Home</a></li>
           <li class="breadcrumb-item">Users</li>
           <li class="breadcrumb-item active">Profile</li>
         </ol>
@@ -22,7 +22,7 @@
             <h5 class="mt-20">{{ Auth::user()->name }}</h5>
             <h5>{{ Auth::user()->matricNo }}</h5>
             <div class="btn-group mt-20" role="group" aria-label="Basic example">
-              <a href="{{ route('dashboard')}}"  type="button" class="btn btn-primary">Home</a>
+              <a href="{{ route('dashboard')}}"  type="button" class="btn btn-primary">My Profile</a>
               <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary">Add Product</a>
               <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary">Update Profile</a>
               <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary">Change Password</a>
