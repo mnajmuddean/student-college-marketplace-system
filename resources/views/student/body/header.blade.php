@@ -214,6 +214,7 @@
                     </div>
                 </div>
                 <!-- Header Middle Area End Here -->
+<<<<<<< Updated upstream
                 <!-- Begin Header Bottom Area -->
                 <div class="header-bottom header-sticky d-none d-lg-block">
                     <div class="container">
@@ -323,6 +324,9 @@
                     </div>
                 </div>
                 <!-- Header Bottom Area End Here -->
+=======
+                
+>>>>>>> Stashed changes
                 <!-- Begin Mobile Menu Area -->
                 <div class="mobile-menu-area mobile-menu-area-4 d-lg-none d-xl-none col-12">
                     <div class="container"> 

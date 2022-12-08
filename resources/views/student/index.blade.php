@@ -5,7 +5,7 @@
 Home - UiTM Jasin Student College Marketplace System
 @endsection
 
-<div class="slider-with-banner">
+<div class="slider-with-banner mt-20">
                 <div class="container">
                     <div class="row">
                         <!-- Begin Category Menu Area -->
@@ -72,7 +72,7 @@ Home - UiTM Jasin Student College Marketplace System
             <!-- Li's Static Banner Area End Here -->
             <!-- Static Top Area End Here -->
             <!-- product-area start -->
-            <div class="product-area pt-55 pb-25 pt-xs-50 mt-150">
+            <div class="product-area pt-55 pb-25 pt-xs-50 mt-50">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
