@@ -14,6 +14,9 @@ use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
 
+use App\Models\Product;
+use App\Models\Category;
+
 use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Responses\LoginResponse;
@@ -42,7 +45,8 @@ class AdminController extends Controller
     }
 
     public function loginForm(){
-        return view ('auth.adminlogin', ['guard' => 'admin']);
+ 
+        return view ('auth.adminlogin',['guard' => 'admin']);
     }
 
     /**
