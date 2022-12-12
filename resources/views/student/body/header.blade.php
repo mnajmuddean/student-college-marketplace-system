@@ -155,7 +155,7 @@
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
                                             <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count" id="cartQty"></span>
+                                                <span class="cart-item-count wishlist-item-count"></span>
                                                 <i class="fa fa-heart-o"></i>
                                             </a>
                                         </li>
