@@ -71,7 +71,7 @@
                                 <!-- Begin Footer Logo Area -->
                                 <div class="col-lg-4 col-md-6">
                                     <div class="footer-logo">
-                                        <img src="{{ asset('logo/ujscms-high-resolution-logo-transparent-background.png')}}" alt="Footer Logo" style="width:30%; height:30%">
+                                        <img src="{{ asset('logo/ujscms-logo.png')}}" alt="Footer Logo" style="width:30%; height:30%">
                                         <p class="info">
                                             We are a team of designers and developers that create high quality HTML Template & Woocommerce, Shopify Theme.
                                         </p>

@@ -18,7 +18,7 @@ Home - UiTM Jasin Student College Marketplace System
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
                                         @foreach(   $categories as $category)
-                                        <li><a href="#"><i class="icon {{ $category->categoryImage}}"></i> {{  $category->categoryName}}</a></li>
+                                        <li><a href="{{ url('category/details/'.$category->categoryID)  }}"><i class="icon {{ $category->categoryImage}}"></i> {{  $category->categoryName}}</a></li>
                                         @endforeach
                                        
                                         
@@ -105,7 +105,7 @@ Home - UiTM Jasin Student College Marketplace System
                                                 <div class="product_desc_info">
                                                     <div class="product-review">
                                                         <h5 class="manufacturer">
-                                                            <a href="product-details.html">Graphic Corner</a>
+                                                            <a href="product-details.html">{{ $product['category']['categoryName'] }} </a>
                                                         </h5>
                                                         <div class="rating-box">
                                                             <ul class="rating">
