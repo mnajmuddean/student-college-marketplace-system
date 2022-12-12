@@ -9,6 +9,7 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Cart\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,13 @@ Route::get('/product/details/{id}', [StudentController::class, 'productDetails']
 Route::get('/category/details/{categoryID}', [StudentController::class, 'CategoryWiseProduct']);
 
 
+//All Product Modal View
 
+Route::get('/product/view/modal/{id}', [StudentController::class, 'ProductViewAjax']);
 
+//All Add To Cart
+Route::post('/cart/data/store/{productID}', [CartController::class, 'AddToCart']);
 
+//All Mini Cart
+Route::get('/product/minicart', [CartController::class, 'MiniCart']);
+Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);

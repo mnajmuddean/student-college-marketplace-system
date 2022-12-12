@@ -101,5 +101,14 @@ class StudentController extends Controller
         $products = Product::where('categoryID',$categoryID)->get();
         return view('student.category.categoryView',compact('categories','products'));
     }
+
+    public function ProductViewAjax($id){
+        $product = Product::with('category')->findOrFail($id);
+
+
+        return response()->json(array(
+            'product' => $product,
+        ));
+    }
     //
 }

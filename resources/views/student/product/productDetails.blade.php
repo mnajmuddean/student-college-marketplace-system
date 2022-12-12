@@ -46,10 +46,28 @@
                             <!--// Product Details Left -->
                         </div>
 
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
                         <div class="col-lg-7 col-md-6">
                             <div class="product-details-view-content pt-60">
                                 <div class="product-info">
-                                    <h2>{{  $product->productName}}</h2>
+                                    <h2 id="pName">{{  $product->productName}}</h2>
                                     <span class="product-details-ref">Reference: demo_15</span>
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
@@ -76,12 +94,13 @@
                                             <div class="quantity">
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                                    <input type="number" class="form-control" id="quantity" value="1" min="1">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <input type="hidden" id="productID" value="{{ $product->productID }}" min="1">
+                                            <button type="submit" onclick="addToCart()" class="add-to-cart" >Add to cart</button>
                                         </form>
                                     </div>
                                     <div class="product-additional-info pt-25">

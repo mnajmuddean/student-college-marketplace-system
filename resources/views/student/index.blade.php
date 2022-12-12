@@ -124,11 +124,13 @@ Home - UiTM Jasin Student College Marketplace System
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                    <li class="add-cart active"><a data-toggle="modal" data-target="#exampleModal" id="{{ $product->productID }}" onclick="productView(this.id)">Add to cart</a></li>
                                                         <li><a class="links-details" href="single-product.html"><i class="fa fa-heart-o"></i></a></li>
                                                         <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
+
+                                               
                                             </div>
                                         </div>
                                        
@@ -139,6 +141,7 @@ Home - UiTM Jasin Student College Marketplace System
                                 </div>
                             </div>
                         </div>
+                        
                         <div id="li-bestseller-product" class="tab-pane" role="tabpanel">
                             <div class="row">
                                 <div class="product-active owl-carousel">
@@ -174,11 +177,15 @@ Home - UiTM Jasin Student College Marketplace System
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                        <li class="add-cart active"><a >>Add to cart</a></li>
                                                         <li><a class="links-details" href="single-product.html"><i class="fa fa-heart-o"></i></a></li>
                                                         <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
+
+                                                
+
+
                                             </div>
                                         </div>
                                         <!-- single-product-wrap end -->

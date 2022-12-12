@@ -155,7 +155,7 @@
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
                                             <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count">0</span>
+                                                <span class="cart-item-count wishlist-item-count" id="cartQty"></span>
                                                 <i class="fa fa-heart-o"></i>
                                             </a>
                                         </li>
@@ -164,39 +164,18 @@
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">£80.00
-                                                    <span class="cart-item-count">2</span>
+                                                <span class="item-text" id="cartSubTotal">
+                                                    <span class="cart-item-count" id="cartQty"></span>
                                                 </span>
                                             </div>
                                             <span></span>
                                             <div class="minicart">
-                                                <ul class="minicart-product-list">
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="{{ asset('/frontend/images/product/small-size/1.jpg')}}" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="{{ asset('/frontend/images/product/small-size/2.jpg')}}" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                                
+                                                    <div id="miniCart">
+                                                        
+                                                    </div>
+                                                
+                                                <p class="minicart-total" >SUBTOTAL: <span id="cartSubTotal"></span></p>
                                                 <div class="minicart-button">
                                                     <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>View Full Cart</span>

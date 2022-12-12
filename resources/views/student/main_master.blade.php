@@ -7,6 +7,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>@yield('title')</title>
         <meta name="description" content="">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/logo/ujscms-logo.png')}}"> 
@@ -44,7 +45,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <!-- Modernizr js -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ asset('/frontend/js/vendor/modernizr-2.8.3.min.js')}} "></script> 
     </head>
     <body>
     <!--[if lt IE 8]>
@@ -53,6 +55,7 @@
         <!-- Begin Body Wrapper -->
         <div class="body-wrapper">
             <!-- Begin Header Area -->
+            
             @include('student.body.header')
             <!-- Header Area End Here -->
             <!-- Begin Slider With Banner Area -->
@@ -129,6 +132,193 @@
         break;
     }
     @endif
+</script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 800px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-4">
+            <div class="card" style="width: 16rem;">
+  <img src="..." class="card-img-top" alt="..." style="height: 270px; width: 260px;" id="pImage">
+</div>
+            </div>
+            <div class="col-lg-4">
+            <ul class="list-group">
+  <li class="list-group-item">Product Price: RM <strong id="pPrice"></strong></li>
+  <li class="list-group-item">Product Code: <strong id="pCode"></strong></li>
+  <li class="list-group-item">Category: <strong id="pCategory"></strong></li>
+  <li class="list-group-item">Products Availability: <span class="badge badge-pill badge-success" id="available" style="background: green; color:white"></span> <span class="badge badge-pill badge-danger" id="unavailable" style="background: red; color:white"></span></li>
+</ul>
+            </div>
+            <div class="col-lg-4">
+            <div class="form-group">
+                                        <label>Quantity</label>
+                                                
+                                                    <input type="number" class="form-control" id="quantity" value="1" min="1">
+                                                    
+                                                
+            </div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <input type="hidden" id="productID">
+        <button type="submit" class="btn btn-primary"  onclick="addToCart()">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    })
+// Start Product View with Modal 
+function productView(id){
+    // alert(id)
+    $.ajax({
+        type: 'GET',
+        url: '/product/view/modal/'+id,
+        dataType:'json',
+        success:function(data){
+            // console.log(data)
+
+            $('#pname').text(data.product.productName);
+            $('#pPrice').text(data.product.productPrice);
+            $('#pCode').text(data.product.productCode);
+            $('#pCategory').text(data.product.category.categoryName);
+            $('#pQty').text(data.product.productQty);
+            $('#pImage').attr('src','/'+data.product.productThumbnail);
+            $('#productID').val(id);
+            $('#quantity').val(1);
+            
+            if(data.product.productQty > 0 ){
+                $('#available').text('');
+                $('#unavailable').text('');
+                $('#available').text('available');
+            }else{
+                $('#available').text('');
+                $('#unavailable').text('');
+                $('#unavailable').text('unavailable');
+            }
+        
+        }
+    })
+ 
+}
+
+function addToCart(){
+    var productName = $('#pname').text();
+    var productID = $('#productID').val();
+    var quantity = $('#quantity').val();
+
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        data:{
+            quantity:quantity,
+            productName: productName
+        },
+        url: "/cart/data/store/"+productID,
+        success:function(data){
+            miniCart()
+            $('#closeModal').click();
+            console.log(data)
+            const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+        }
+    })
+}
+</script>
+
+
+<script type="text/javascript">
+    function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url : '/product/minicart',
+            dataType: 'json',
+            success: function(response){
+                
+                $('span[id="cartSubTotal"]').text(response.cartTotal);
+                $('#cartQty').text(response.cartQty);
+                var miniCart = ""
+                $.each(response.carts, function(key,value){
+                    miniCart += `<li>
+                                                        <a href="detail.html"><img src="/${value.image}" alt=""></a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="single-product.html">${value.name}</a></h6>
+                                                            <span> RM ${value.price} * ${value.qty}</span>
+                                                        </div>
+                                                        <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-close"></i></button> </div>
+                                                    </li>`
+                });
+                
+                $('#miniCart').html(miniCart);
+            }
+        })
+    }
+
+    miniCart();
+
+    function miniCartRemove(rowId){
+        $.ajax({
+            type: 'GET',
+            url: '/minicart/product-remove/'+rowId,
+            dataType:'json',
+            success:function(data){
+            miniCart();
+             // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+            }
+        });
+    }
+
 </script>
     </body>
 
