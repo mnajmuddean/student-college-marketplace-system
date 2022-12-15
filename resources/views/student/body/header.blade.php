@@ -23,9 +23,19 @@
                                             <div class="ht-setting-trigger"><span>Setting</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">My Account</a></li>
+                                                     @auth
+                                                    <li><a href="{{  route('login')  }}">My Account</a></li>
+                                                    <li><a href="{{ route('wishlist')}}">Wishlist</a></li>
+                                                    <li><a href="{{ route('student.logout')}}   ">Log Out</a></li>
+
+                                                    @else 
+                                                    <a href="{{  route('login')  }}" class="text-white active">Login/Register</a></li>
+
+                                                    @endauth
+                                                    
+                                                   
                                                     <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login-register.html">Sign In</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </li>

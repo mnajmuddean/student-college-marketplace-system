@@ -320,6 +320,108 @@ function addToCart(){
     }
 
 </script>
+
+<script stype="text/javascript">
+
+    function addWishlist(productID){
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/addWishlist/"+productID,
+
+
+            success:function(data){
+
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+
+            }
+        })
+    }
+
+</script>
+
+<script type="text/javascript">
+    function wishlist(){
+        $.ajax({
+            type: 'GET',
+            url : '/user/getwishlist',
+            dataType: 'json',
+            success: function(response){
+                
+                var rows = ""
+                $.each(response, function(key,value){
+                    rows += `<tr>
+                                                <td class="li-product-remove"><button type="submit" id="${value.wishlistID}" onclick="wishlistRemove(this.id)"><i class="fa fa-close"></i></button> </div></td>
+                                                <td class="li-product-thumbnail"><a href="#"><img src="/${value.product.productThumbnail}" alt="" style="width:200px; height:200px;"></a></td>
+                                                <td class="li-product-name"><a href="#">${value.product.productName}</a></td>
+                                                <td class="li-product-price"><span class="amount">${value.product.productPrice}</span></td>
+                                                <td class="li-product-stock-status"><span class="in-stock">in stock</span></td>
+                                                <td class="li-product-add-cart"><a data-toggle="modal" data-target="#exampleModal" id="${value.productID}" onclick="productView(this.id)">Add to cart</a></td>
+                                </tr>`
+                });
+                
+                $('#wishlist').html(rows);
+            }
+        })
+    }
+
+    wishlist();
+    </script>
+
+<script>
+function wishlistRemove(wishlistID){
+        $.ajax({
+            type: 'GET',
+            url: '/user/wishlist/remove/'+wishlistID,
+            dataType:'json',
+            success:function(data){
+            wishlist();
+             // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+            }
+        });
+    }
+
+</script>
     </body>
 
 <!-- index-431:47-->

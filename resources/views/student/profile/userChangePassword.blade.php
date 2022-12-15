@@ -24,12 +24,17 @@ $user = DB::table('users')->where('id', Auth::user()->id)->first();
             <img src="{{ (!empty($user->profile_photo_path))? url('upload/userImages/'.$user->profile_photo_path):url('upload/no_image.png') }}" alt="Profile" class="rounded-circle" style="height:20% ; width: 20%">
             <h5 class="mt-20">{{ Auth::user()->name }}</h5>
             <h5>{{ Auth::user()->matricNo }}</h5>
-            <div class="btn-group mt-20" role="group" aria-label="Basic example">
-            <a href="{{ route('dashboard')}}"  type="button" class="btn btn-primary">Home</a>
-              <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary">Update Profile</a>
-              <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary">Change Password</a>
-              <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger">Logout</a>
-            </div>  
+            <div class="btn-group-vertical mt-20" role="group" aria-label="Basic example">
+          
+            <a href="{{ route('dashboard')}}"  type="button" class="btn btn-primary mt-5">My Profile</a>
+              <a href="{{ route('add.product')}}"  type="button" class="btn btn-primary mt-5">Add Product</a>
+              <a href="{{ route('manage.product')}}"  type="button" class="btn btn-primary mt-5">View Product</a>
+              <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary mt-5">Update Profile</a>
+              <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary  mt-5">Change Password</a>
+              <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger  mt-5">Logout</a>
+
+
+            </div> 
             </div>
           </div>
 

@@ -124,8 +124,8 @@ Home - UiTM Jasin Student College Marketplace System
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a data-toggle="modal" data-target="#exampleModal" id="{{ $product->productID }}" onclick="productView(this.id)">Add to cart</a></li>
-                                                        <li><a class="links-details" href="single-product.html"><i class="fa fa-heart-o"></i></a></li>
+                                                        <li class="add-cart active"><a data-toggle="modal" data-target="#exampleModal" id="{{ $product->productID }}" onclick="productView(this.id)">Add to cart</a></li>
+                                                        <li><a class="links-details" id="{{ $product->productID }}" onclick="addWishlist(this.id)"><i class="fa fa-heart-o"></i></a></li>
                                                         <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>

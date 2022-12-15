@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer mt-30">
                 <!-- Begin Footer Static Top Area -->
                 <div class="footer-static-top">
                     <div class="container">

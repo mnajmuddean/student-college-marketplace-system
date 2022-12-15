@@ -14,8 +14,9 @@ class ProductController extends Controller
 {
 
     public function AddProduct(){
+            
             $categories = Category::latest()->get();
-            return view('backend.product.addProduct',compact('categories'));
+            return view('student.product.addProduct',compact('categories'));
     }
 
     public function StoreProduct(Request $request){
@@ -64,7 +65,7 @@ class ProductController extends Controller
     public function ManageProduct(){
         $products = Product::latest()->get();
         $categories = Category::latest()->get();
-        return view('backend.product.viewProduct',compact('products','categories'));
+        return view('student.product.viewProduct',compact('products','categories'));
     }
 
     public function EditProduct($productID){
@@ -72,7 +73,7 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
         $products = Product::findOrFail($productID);
         
-        return view('backend.product.editProduct', compact('categories','products','multiple_images'));
+        return view('student.product.editProduct', compact('categories','products','multiple_images'));
 
     }
 
