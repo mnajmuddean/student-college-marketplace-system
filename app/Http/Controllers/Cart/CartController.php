@@ -22,7 +22,11 @@ class CartController extends Controller
             'qty' => $request->quantity,
             'price' => $product->productPrice,
             'weight' => 1, 
-            'image' => $product->productThumbnail,
+            'options' => [
+                'image' => $product->productThumbnail,
+                
+            ],
+            
             
         ]);
 

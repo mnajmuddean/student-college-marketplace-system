@@ -8,7 +8,7 @@ $adminData = DB::table('admins')->first();
 
 
 <div class="d-flex align-items-center justify-content-between">
-  <a href="index.html" class="logo d-flex align-items-center">
+  <a href="{{ url('admin/dashboard')}}" class="logo d-flex align-items-center">
     <img src="{{ asset('/logo/ujscms-logo.png')}}" alt="" > 
     <span class="d-none d-lg-block">UJSCMS</span>
   </a>

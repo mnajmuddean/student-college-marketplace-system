@@ -6,20 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\SellersProducts;
 use App\Models\MultipleImage;
 use Carbon\Carbon;
 use Image;
+use Auth;
 
 class ProductController extends Controller
 {
 
     public function AddProduct(){
+
             
             $categories = Category::latest()->get();
             return view('student.product.addProduct',compact('categories'));
     }
 
     public function StoreProduct(Request $request){
+
+
 
         $image = $request->file('productThumbnail');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -53,6 +58,16 @@ class ProductController extends Controller
             ]);
         }
 
+       
+        
+        SellersProducts::insert([    
+            
+            'productID' => $productID,
+            'userID' => Auth::user()->id,
+            'created_at' => Carbon::now(),
+
+        ]);
+
         $notification = array(
             'message' => 'Product Inserted Successfully',
             'alert-type' => 'success'
@@ -63,9 +78,17 @@ class ProductController extends Controller
     }
 
     public function ManageProduct(){
-        $products = Product::latest()->get();
-        $categories = Category::latest()->get();
-        return view('student.product.viewProduct',compact('products','categories'));
+        $id = Auth::user()->id;
+
+        $products = Product::select('productName', 'products.productID','productPrice', 'productThumbnail','products.categoryID','categories.categoryName','productCode','productQty','productDescription','productStatus') 
+        ->where('users.id',$id)                  
+        ->join('sellers_products', 'products.productID', '=', 'sellers_products.productID')
+        ->join('users', 'users.id', '=', 'sellers_products.userID')
+        ->join('categories', 'categories.categoryID', '=', 'products.categoryID')
+        ->get();
+
+
+        return view('student.product.viewProduct',compact('products'));
     }
 
     public function EditProduct($productID){
@@ -104,6 +127,8 @@ class ProductController extends Controller
             unlink($img->imageName);
             MultipleImage::where('productID',$productID)->delete();
         }
+        
+        
 
         return redirect()->back();
     }

@@ -14,4 +14,4 @@ class MultipleImage extends Model
     public function product(){
         return $this->belongsTo(Product::class,'productID','id');
     }
-}
+}  

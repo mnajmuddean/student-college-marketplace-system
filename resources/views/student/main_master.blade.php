@@ -271,15 +271,26 @@ function addToCart(){
                 $('#cartQty').text(response.cartQty);
                 var miniCart = ""
                 $.each(response.carts, function(key,value){
-                    miniCart += `<li>
-                                                        <a href="detail.html"><img src="/${value.image}" alt=""></a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">${value.name}</a></h6>
-                                                            <span> RM ${value.price} * ${value.qty}</span>
-                                                        </div>
-                                                        <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-close"></i></button> </div>
+                    miniCart += `<li>                   
+                                                                <ul class="minicart-product-list">
+                                                                    <li>
+                                                                        
+                                                                        <img src="/${value.options.image}" style="width:30%;height:30%"alt="">
+                                                                       
+                                                                        <div class="minicart-product-details">
+                                                                        <h6><a href="single-product.html">${value.name}</a></h6>
+                                                                         <span> RM ${value.price} * ${value.qty}</span>
+                                                                        </div>
+                                                                        <button type="submit" id="${value.rowId}" style="height:20%" onclick="miniCartRemove(this.id)"><i class="fa fa-close"></i></button> </div>
+                                                                    </li>
+                                                                </ul>
                                                     </li>`
                 });
+
+                                        
+                                            
+                                            
+                                     
                 
                 $('#miniCart').html(miniCart);
             }
@@ -417,6 +428,91 @@ function wishlistRemove(wishlistID){
                     })
                 }
                 // End Message 
+            }
+        });
+    }
+
+</script>
+
+<script type="text/javascript">
+    function cart(){
+        $.ajax({
+            type: 'GET',
+            url : '/user/getcart',
+            dataType: 'json',
+            success: function(response){
+                
+                var rows = ""
+                $.each(response.carts, function(key,value){
+                    rows += `<tr>
+                                                <td class="li-product-remove"><button type="submit" id="${value.rowId}" onclick="cartRemove(this.id)"><i class="fa fa-close"></i></button> </div></td>
+                                                <td class="li-product-thumbnail"><a href="#"><img src="/${value.options.image}" alt="" style="width:200px; height:200px;"></a></td>
+                                                <td class="li-product-name"><a href="#">${value.name}</a></td>
+                                                <td class="li-product-price"><span class="amount">RM ${value.price}</span></td>
+                                                <td class="li-product-stock-status"><span class="in-stock">in stock</span></td>
+                                                <td>
+                                                    <button type="submit" class="btn btn-danger btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)" >-</button> 
+                                                    <input type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:25px;" >  
+                                                    <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartIncrement(this.id)" >+</button>                                  
+                                                </td>
+                                                <td class="li-product-stock-status"> <span> RM ${value.subtotal}</span></td>
+                                               
+                                                <td class="li-product-add-cart"><a data-toggle="modal" data-target="#exampleModal" id="${value.productID}" onclick="productView(this.id)">Add to cart</a></td>
+                                </tr>`
+                });
+                
+                $('#cart').html(rows);
+            }
+        })
+    }
+
+    cart();
+    </script>
+
+<script>
+function cartRemove(id){
+        $.ajax({
+            type: 'GET',
+            url: '/user/cart/remove/'+id,
+            dataType:'json',
+            success:function(data){
+            
+            cart();
+            miniCart();
+             // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+            }
+        });
+    }
+
+    function cartIncrement(rowId){
+        $.ajax({
+            type:'GET',
+            url: "/cart-increment/"+rowId,
+            dataType:'json',
+            success:function(data){
+                cart();
+                miniCart();
             }
         });
     }

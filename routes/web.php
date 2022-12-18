@@ -10,6 +10,7 @@ use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Cart\CartController;
+use App\Http\Controllers\CartPage\CartPageController;
 use App\Http\Controllers\Wishlist\WishlistController;
 
 /*
@@ -115,14 +116,17 @@ Route::post('/cart/data/store/{productID}', [CartController::class, 'AddToCart']
 //All Mini Cart
 Route::get('/product/minicart', [CartController::class, 'MiniCart']);
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
-
+Route::post('/addWishlist/{productID}', [CartController::class, 'addWishlist']);
 
 //Add Wishlist
 Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'User'], function(){
 
-    Route::post('/addWishlist/{productID}', [CartController::class, 'addWishlist']);
 Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
 Route::get('/getwishlist', [WishlistController::class, 'getwishlist']);
 Route::get('/wishlist/remove/{wishlistID}', [WishlistController::class, 'wishlistRemove']);
+Route::get('/cart', [CartPageController::class, 'cart'])->name('cart');
+Route::get('/getcart', [CartPageController::class, 'getcart']);
+Route::get('/cart/remove/{rowID}', [CartPageController::class, 'cartRemove']);
+Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
 
 });

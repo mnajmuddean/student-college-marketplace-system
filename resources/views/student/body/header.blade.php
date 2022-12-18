@@ -24,14 +24,16 @@
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
                                                      @auth
-                                                    <li><a href="{{  route('login')  }}">My Account</a></li>
-                                                    <li><a href="{{ route('wishlist')}}">Wishlist</a></li>
+                                                    <li><a href="{{  route('login')  }}">My Account</a></li>    
                                                     <li><a href="{{ route('student.logout')}}   ">Log Out</a></li>
-
                                                     @else 
+
                                                     <a href="{{  route('login')  }}" class="text-white active">Login/Register</a></li>
 
                                                     @endauth
+
+                                                    <li><a href="{{ route('wishlist')}}">Wishlist</a></li>
+                                                    <li><a href="{{ route('cart')}}">My Cart</a></li>
                                                     
                                                    
                                                     <li><a href="checkout.html">Checkout</a></li>
@@ -164,7 +166,7 @@
                                     <ul class="hm-menu">
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
-                                            <a href="wishlist.html">
+                                            <a href="{{ route('wishlist')}}">
                                                 <span class="cart-item-count wishlist-item-count"></span>
                                                 <i class="fa fa-heart-o"></i>
                                             </a>
@@ -173,7 +175,7 @@
                                         <!-- Begin Header Mini Cart Area -->
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
-                                                <span class="item-icon"></span>
+                                                <span class="item-icon"></span>RM
                                                 <span class="item-text" id="cartSubTotal">
                                                     <span class="cart-item-count" id="cartQty"></span>
                                                 </span>
@@ -185,9 +187,9 @@
                                                         
                                                     </div>
                                                 
-                                                <p class="minicart-total" >SUBTOTAL: <span id="cartSubTotal"></span></p>
+                                                <p class="minicart-total" >SUBTOTAL: <span>RM <span id="cartSubTotal"></span></p>
                                                 <div class="minicart-button">
-                                                    <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <a href="{{ route('cart')}}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>View Full Cart</span>
                                                     </a>
                                                     <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">

@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-{{  $product->productName}} - Product Details
+{{ $products[0]->title }}
 @endsection
 
 <div class="breadcrumb-area">
@@ -27,7 +27,9 @@
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
                                         <a class="popup-img venobox vbox-item" href="images/product/large-size/1.jpg" data-gall="myGallery">
+                                            @foreach($products as $product)
                                             <img src="{{ asset($product->productThumbnail)}}" alt="product image">
+                                            @endforeach
                                         </a>
                                     </div>
                                 </div>
@@ -67,8 +69,11 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="product-details-view-content pt-60">
                                 <div class="product-info">
-                                    <h2 id="pName">{{  $product->productName}}</h2>
-                                    <span class="product-details-ref">Reference: demo_15</span>
+                                    @foreach($products as $product)
+                                    <h2 id="pName">{{  $product->productName}}</h2>   
+                                    <strong class="product-details-ref">{{  $product->name}}</strong>
+                                    <h2><span class="product-details-ref">{{  $product->matricNo}}</span><h2>
+                                    
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
                                             <li><i class="fa fa-star-o"></i></li>
@@ -102,6 +107,8 @@
                                             <input type="hidden" id="productID" value="{{ $product->productID }}" min="1">
                                             <button type="submit" onclick="addToCart()" class="add-to-cart" >Add to cart</button>
                                         </form>
+    
+                                        @endforeach
                                     </div>
                                     <div class="product-additional-info pt-25">
                                         

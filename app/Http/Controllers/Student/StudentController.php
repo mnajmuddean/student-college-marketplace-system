@@ -90,10 +90,19 @@ class StudentController extends Controller
     }
 
     public function productDetails($id){
-        $product = Product::findOrFail($id);
+
+        $products = Product::select('productName', 'productPrice', 'productThumbnail','users.name','users.matricNo','users.profile_photo_path') 
+                                    ->where('products.productID',$id)                  
+                                    ->join('sellers_products', 'products.productID', '=', 'sellers_products.productID')
+                                    ->join('users', 'users.id', '=', 'sellers_products.userID')
+                                    ->get();
+                                //    echo json_encode($products);
+
         $multiImage = MultipleImage::where('productID',$id)->get();
+
+        
        
-        return view('student.product.productDetails',compact('product','multiImage'));
+        return view('student.product.productDetails',compact('products','multiImage'));
     }
 
     public function CategoryWiseProduct($categoryID){
