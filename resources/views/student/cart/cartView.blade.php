@@ -42,6 +42,19 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-5 ml-auto">
+                                        <div class="cart-page-total">
+                                            <h2>Cart totals</h2>
+                                            <ul>
+                                                <li>Subtotal <span> RM <span id="cartSubTotal"></span></li>
+                                                <li>Total <span> RM <span id="cartSubTotal"></span></li>
+                                            </ul>
+                                            <a href=" {{ route('checkout')}}">Proceed to checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

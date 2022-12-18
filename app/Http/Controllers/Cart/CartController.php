@@ -78,6 +78,31 @@ class CartController extends Controller
 
     } 
 
+    public function checkout(){
+        if(Auth::check()){
+            if(Cart::total() > 0 ){
+
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+                
+                return view('student.checkout.viewCheckout', compact('carts','cartQty','cartTotal'));
+            }else{
+                return response()->json(['error' => 'Please Fill In Your Cart First']);
+            }
+
+        }else{
+            $notification = array(
+                'message' => 'You Need to Login First',
+                'alert-type' => 'error'
+            );
+    
+            return redirect()->route('login')->with($notification);
+        }
+
+       
+    }
+
     }
     //
 

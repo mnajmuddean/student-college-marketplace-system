@@ -12,6 +12,7 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CartPage\CartPageController;
 use App\Http\Controllers\Wishlist\WishlistController;
+use App\Http\Controllers\Checkout\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,9 +125,15 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
 Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
 Route::get('/getwishlist', [WishlistController::class, 'getwishlist']);
 Route::get('/wishlist/remove/{wishlistID}', [WishlistController::class, 'wishlistRemove']);
-Route::get('/cart', [CartPageController::class, 'cart'])->name('cart');
-Route::get('/getcart', [CartPageController::class, 'getcart']);
-Route::get('/cart/remove/{rowID}', [CartPageController::class, 'cartRemove']);
-Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
+
 
 });
+
+Route::get('/cart', [CartPageController::class, 'cart'])->name('cart');
+Route::get('/user/getcart', [CartPageController::class, 'getcart']);
+Route::get('/user/cart/remove/{rowID}', [CartPageController::class, 'cartRemove']);
+Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
+Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement']);
+
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/store', [CheckoutController::class, 'checkoutStore'])->name('checkoutStore');
