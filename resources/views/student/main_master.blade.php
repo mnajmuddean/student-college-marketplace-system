@@ -47,6 +47,8 @@
         <!-- Modernizr js -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('/frontend/js/vendor/modernizr-2.8.3.min.js')}} "></script> 
+        
+    
     </head>
     <body>
     <!--[if lt IE 8]>

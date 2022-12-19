@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultipleImage;
 use Illuminate\Support\Facades\Hash;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class StudentController extends Controller
 {
@@ -27,6 +28,7 @@ class StudentController extends Controller
     public function StudentLogout(){
         Auth::logout();
 
+        Cart::destroy();
         return redirect()->route('login');
     }
 

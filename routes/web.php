@@ -13,6 +13,7 @@ use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\CartPage\CartPageController;
 use App\Http\Controllers\Wishlist\WishlistController;
 use App\Http\Controllers\Checkout\CheckoutController;
+use App\Http\Controllers\Stripe\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +126,7 @@ Route::group(['prefix' => 'user','middleware' => ['user','auth'],'namespace'=>'U
 Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
 Route::get('/getwishlist', [WishlistController::class, 'getwishlist']);
 Route::get('/wishlist/remove/{wishlistID}', [WishlistController::class, 'wishlistRemove']);
+Route::post('/stripe/order', [StripeController::class, 'stripeOrder'])->name('stripeOrder');
 
 
 });
