@@ -183,18 +183,7 @@
             <div class="col-12">
               <div class="card top-selling overflow-auto">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
+               
 
                 <div class="card-body">
                   <h5 class="card-title">All Products</h5>
@@ -222,7 +211,7 @@
                               <td>{{  $item->productQty}}</td>
                               <td>{{  $item->productPrice}}</td>
                               <td>{{  $item->productDescription}}</td>
-                              <td> <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="bi bi-trash"></i></a></td>
+                              <td><a href="{{ route('product.delete' , $item->productID)}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i> </a></td>
                               <td>
                       </tr>
                       @endforeach
@@ -238,19 +227,6 @@
             <div class="col-12">
               <div class="card top-selling overflow-auto">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
                 <div class="card-body">
                   <h5 class="card-title">Registered Students</h5>
 
@@ -258,7 +234,7 @@
                     <thead>
                       <tr>
                       <tr>
-                      <th scope="col">Image</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Matric Number</th>
@@ -272,7 +248,7 @@
                     <tbody>
                     @foreach($users as $user)
                       <tr>
-                      <td> <img src="{{ asset($user->profile_photo_path) }}" style="width:60 px; height:60px"></td>
+                      <td> <img src="/upload/userImages/{{ $user->profile_photo_path }}" style="width:60 px; height:60px"></td>
                               <td>{{  $user->name}}</td>
                               <td>{{  $user->email}}</td>
                               <td>{{  $user->matricNo}}</td>

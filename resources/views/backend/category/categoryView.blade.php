@@ -26,7 +26,8 @@
                               <td>{{  $item->categoryName}}</td>
                               <td>
                                 <a href="{{ route('category.edit', $item->categoryID ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
-                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="bi bi-trash-fill"></i></a>
+                                <a href="{{ route('category.delete' , $item->categoryID)}}" class="btn btn-danger"><i class="bi bi-trash-fill"></i> </a>
+                                <!-- <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="bi bi-trash-fill"></i></a>
                               
                                       <div class="modal fade" id="verticalycentered" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -42,11 +43,11 @@
                                             </div>
                                             <div class="modal-footer align-item-center">
                                               <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
-                                              <a type="button" class="btn btn-primary" href="{{ route('category.delete' , $item->categoryID)}}">Yes, delete it!</a>
+                                              <a type="button" class="btn btn-primary" href="">Yes, delete it!</a>
                                             </div>
                                           </div>
                                         </div>
-                                      </div>
+                                      </div> -->
                               </td>
                             </tr>
                             @endforeach

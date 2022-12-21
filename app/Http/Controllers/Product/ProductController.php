@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SellersProducts;
@@ -201,6 +202,18 @@ class ProductController extends Controller
         Product::findOrFail($productID)->update(['productStatus' => 1]);
 
         return redirect()->back();
+    }
+
+    public function allStudent(){
+        $users = User::select('name', 'email', 'matricNo','phoneNo','studCourse','roomNo','profile_photo_path')->get();
+
+        return view ('admin.allStudent',compact('users'));
+    }
+
+    public function allProduct(){
+        $products = Product::latest()->get();
+
+        return view ('admin.allProduct',compact('products'));
     }
     //
 }

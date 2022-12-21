@@ -85,6 +85,10 @@ Route::prefix('category')->group(function(){
 
 });
 
+    Route::get('/allstudent', [ProductController::class, 'allStudent'])->name('all.students');
+    Route::get('/allproduct', [ProductController::class, 'allProduct'])->name('all.products');
+    
+
 // All Product Routes
 
 Route::prefix('product')->group(function(){
