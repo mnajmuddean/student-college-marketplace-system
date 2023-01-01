@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\AllController;
 use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\CartPage\CartPageController;
 use App\Http\Controllers\Wishlist\WishlistController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Stripe\StripeController;
+use App\Http\Controllers\Cash\CashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +133,9 @@ Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist
 Route::get('/getwishlist', [WishlistController::class, 'getwishlist']);
 Route::get('/wishlist/remove/{wishlistID}', [WishlistController::class, 'wishlistRemove']);
 Route::post('/stripe/order', [StripeController::class, 'stripeOrder'])->name('stripeOrder');
+Route::post('/cash/order', [CashController::class, 'cashOrder'])->name('cashOrder');
+Route::get('/my/orders', [AllController::class, 'studentOrders'])->name('student.orders');
+Route::get('/orderDetails/{orderID}', [AllController::class, 'orderDetails']);
 
 
 });

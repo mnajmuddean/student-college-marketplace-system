@@ -22,10 +22,10 @@ return new class extends Migration
             $table->timestamp('paymentTime')->nullable();
             $table->string('payment_type');
             $table->string('payment_method');
-            $table->string('transaction_id');
+            $table->string('transaction_id')->nullable();
             $table->string('currency');
             $table->float('amount',8,2);
-            $table->string('order_number');
+            $table->string('order_number')->nullable();
             $table->string('invoice_no');
             $table->timestamps();
         });

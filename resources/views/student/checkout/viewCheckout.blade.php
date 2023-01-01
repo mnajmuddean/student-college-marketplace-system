@@ -110,24 +110,24 @@
                                               <h5 class="panel-title">
                                               
                                                 <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Online Banking
+                                                  Stripe
                                                 </a>
                                                 <br>
-                                                <img src="{{ asset('/logo/stripe.png')}}" style="width:80px; ">
+                                                <img src="{{ asset('/logo/stripe.png')}}" style="width:50px; ">
                                               </h5>
                                             </div>
                                           </div>
                                           
                                           <div class="card">
                                             <div class="card-header" id="#payment-2">
-                                            <input type="radio" name="payment_method" value="stripe" style="width:5%">
+                                            <input type="radio" name="payment_method" value="cash" style="width:5%">
                                               <h5 class="panel-title">
                                               
                                                 <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                   Cash
                                                 </a>
                                                 <br>
-                                                <img src="{{ asset('/logo/cash-payment.png')}}" style="width:80px; ">
+                                                <img src="{{ asset('/logo/cash-payment.png')}}" style="width:50px; ">
                                               </h5>
                                             </div>
                                           </div>
