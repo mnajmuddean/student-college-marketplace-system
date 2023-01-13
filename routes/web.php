@@ -136,8 +136,7 @@ Route::post('/stripe/order', [StripeController::class, 'stripeOrder'])->name('st
 Route::post('/cash/order', [CashController::class, 'cashOrder'])->name('cashOrder');
 Route::get('/my/orders', [AllController::class, 'studentOrders'])->name('student.orders');
 Route::get('/orderDetails/{orderID}', [AllController::class, 'orderDetails']);
-
-
+Route::get('/pending/orders', [AllController::class, 'pendingOrder'])->name('student.pendingorder');
 });
 
 Route::get('/cart', [CartPageController::class, 'cart'])->name('cart');
@@ -148,3 +147,6 @@ Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/store', [CheckoutController::class, 'checkoutStore'])->name('checkoutStore');
+
+
+    

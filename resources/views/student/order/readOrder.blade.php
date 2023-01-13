@@ -51,11 +51,10 @@
                           <thead>
                             <tr>
                               <th scope="col">Date</th>
-                              <th scope="col">Total</th>
-                              <th scope="col">Payment</th>
                               <th scope="col">Invoice</th>
-                              <th scope="col">Order</th>
-                              <th scope="col">Action</th>
+                              <th scope="col">Amount</th>
+                              <th scope="col">Payment</th>
+                              <th scope="col">Status</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -63,16 +62,10 @@
                           @foreach($orders as $order)
                             <tr>
                               <td>{{    $order->orderTime}}</td>
+                              <td>{{    $order->invoice_no}}</td>
                               <td>RM {{    $order->amount}}</td>
                               <td>{{    $order->payment_method}}</td>
-                              <td>{{    $order->invoice_no}}</td>
                               <td><span class="badge bg-success">{{ $order->orderStatus}}</span></td>
-
-                                <td>
-                                 <a href="{{ url('user/orderDetails/'.$order->id)}}" class="btn btn-primary" title="Product Status"><i class="bi bi-eye-fill"></i> View </a>
-                            
-                                </td>
-
                             </tr>
                             @endforeach
 
