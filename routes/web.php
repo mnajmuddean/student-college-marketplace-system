@@ -52,6 +52,7 @@ Route::get('admin/change/password', [AdminProfileController::class, 'AdminChange
 Route::post('update/change/password', [AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
 
 
+
 // All User Routes
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function(){
@@ -89,6 +90,7 @@ Route::prefix('category')->group(function(){
 
     Route::get('/allstudent', [ProductController::class, 'allStudent'])->name('all.students');
     Route::get('/allproduct', [ProductController::class, 'allProduct'])->name('all.products');
+    Route::get('/product/report', [ProductController::class, 'viewReportProduct'])->name('viewReportProduct');
     
 
 // All Product Routes
@@ -100,6 +102,7 @@ Route::prefix('product')->group(function(){
     Route::get('/edit/{productID}', [ProductController::class, 'EditProduct'])->name('product.edit');
     Route::post('/update/{productID}', [ProductController::class, 'UpdateProduct'])->name('product.update');
     Route::get('/delete/{productID}', [ProductController::class, 'DeleteProduct'])->name('product.delete');
+    Route::get('/report/{productID}', [ProductController::class, 'ReportProduct'])->name('product.report');
     Route::post('/multi-image/update', [ProductController::class, 'UpdateMultiImage'])->name('multiimage.update');
     Route::post('/image-thumbnail/update/{productID}', [ProductController::class, 'UpdateThumbnailImage'])->name('imagethumbnail.update');
     Route::get('/multi-image/delete/{productID}', [ProductController::class, 'DeleteMultiImage'])->name('multiimage.delete');

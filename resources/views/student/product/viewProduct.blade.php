@@ -71,13 +71,14 @@
                               <td>{{  $item->productPrice}}</td>
                               <td>{{  $item->productDescription}}</td>
                               <td>
-                                @if(  $item->productStatus == 1)
-                                <span class="badge bg-success">Active</span>
+                                @if(  $item->isReport == 1)
+                                <span class="badge bg-danger">Reported</span>
 
                                 @else
-                                <span class="badge bg-danger">Inactive</span>
+                                <span class="badge bg-success">Pass</span>
                                 @endif
                               </td>
+                              
                               <td>
                                 <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary" title="Product Status"><i class="bi bi-eye-fill"></i> </a>
                                 <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
@@ -106,13 +107,13 @@
                                 </div>
                                 @endforeach
                                 
-                                @if(  $item->productStatus == 1)
+                                <!-- @if(  $item->productStatus == 1)
                                 <a href="{{ route('product.inactive', $item->productID ) }}" class="btn btn-danger" title="Inactive Now"><i class="bi bi-file-arrow-down"></i> </a>
 
                                 @else
                                 <a href="{{ route('product.active', $item->productID ) }}" class="btn btn-success" title="Active Now"><i class="bi bi-file-arrow-up"></i> </a>
                                
-                                @endif
+                                @endif -->
                                   
                               </td>
                             </tr>

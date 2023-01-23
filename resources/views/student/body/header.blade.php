@@ -51,7 +51,10 @@
                                         
 
                                         @auth
+                                        <a href="{{  route('chatify')  }}" class="text-white active pxhp-2 pr-3">Chat</a></li>
+                                        
                                         <a href="{{  route('login')  }}" class="text-white active pxhp-2">My Profile</a></li>
+                                        
 
                                         @else 
                                         <a href="{{  route('login')  }}" class="text-white active">Login/Register</a></li>

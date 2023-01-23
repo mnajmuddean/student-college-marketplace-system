@@ -32,6 +32,7 @@
                               <th scope="col">Product Quantity</th>
                               <th scope="col">Product Price</th>
                               <th scope="col">Product Description</th>
+                              <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,13 @@
                               <td>{{  $item->productQty}}</td>
                               <td>{{  $item->productPrice}}</td>
                               <td>{{  $item->productDescription}}</td>
+                              <td>
+                                <a href="{{ route('product.delete' , $item->productID)}}" class="btn btn-danger" ><i class="bi bi-trash-fill"></i></a>
+                                
+                                @if(  $item->isReport == 1)
+                                <a href="{{ route('product.inactive', $item->productID ) }}" class="btn btn-success" title="Keep Product"><i class="bi bi-arrow-repeat"></i> </a>               
+                                @endif
+                                
                               <td>
                       </tr>
                       @endforeach

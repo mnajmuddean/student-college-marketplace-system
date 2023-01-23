@@ -50,6 +50,19 @@
             </a>
           </li>
         </ul>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-exclamation-circle"></i><span>Reported Item</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('viewReportProduct')}}">
+              <i class="ri-checkbox-blank-circle-fill"></i><span>View Reported Item</span>
+            </a>
+          </li>
+        </ul>
       </li><!-- End Forms Nav -->
 
       <!-- <li class="nav-item">

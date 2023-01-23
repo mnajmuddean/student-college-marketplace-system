@@ -40,7 +40,7 @@ class ProductController extends Controller
             'productPrice' => $request->productPrice,
             'productDescription' => $request->productDescription,
             'productThumbnail' => $save_url,
-            'productStatus' =>  1,
+            'isReport' =>  0,
             'created_at' =>  Carbon::now(),
         ]);
 
@@ -81,7 +81,7 @@ class ProductController extends Controller
     public function ManageProduct(){
         $id = Auth::user()->id;
 
-        $products = Product::select('productName', 'products.productID','productPrice', 'productThumbnail','products.categoryID','categories.categoryName','productCode','productQty','productDescription','productStatus') 
+        $products = Product::select('productName', 'products.productID','productPrice', 'productThumbnail','products.categoryID','categories.categoryName','productCode','productQty','productDescription','isReport') 
         ->where('users.id',$id)                  
         ->join('sellers_products', 'products.productID', '=', 'sellers_products.productID')
         ->join('users', 'users.id', '=', 'sellers_products.userID')
@@ -110,7 +110,7 @@ class ProductController extends Controller
             'productQty' => $request->productQty,
             'productPrice' => $request->productPrice,
             'productDescription' => $request->productDescription,
-            'productStatus' =>  1,
+            'isReport' =>  0,
             'created_at' =>  Carbon::now(),
         ]);
 
@@ -192,14 +192,14 @@ class ProductController extends Controller
     }
 
     public function InactiveProduct($productID){
-        Product::findOrFail($productID)->update(['productStatus' => 0]);
+        Product::findOrFail($productID)->update(['isReport' => 0]);
 
         return redirect()->back();
 
     }
 
     public function ActiveProduct($productID){
-        Product::findOrFail($productID)->update(['productStatus' => 1]);
+        Product::findOrFail($productID)->update(['isReport' => 1]);
 
         return redirect()->back();
     }
@@ -214,6 +214,18 @@ class ProductController extends Controller
         $products = Product::latest()->get();
 
         return view ('admin.allProduct',compact('products'));
+    }
+
+    public function viewReportProduct(){
+        $products = Product::where('isReport', 1)->get();
+
+        return view ('admin.reportedProduct',compact('products'));
+    }
+
+     public function ReportProduct($productID){
+        Product::findOrFail($productID)->update(['isReport' => 1]);
+
+        return redirect()->back();
     }
     //
 }

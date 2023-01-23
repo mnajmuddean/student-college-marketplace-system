@@ -36,11 +36,11 @@
                               <td>{{  $item->productPrice}}</td>
                               <td>{{  $item->productDescription}}</td>
                               <td>
-                                @if(  $item->productStatus == 1)
-                                <span class="badge bg-success">Active</span>
+                                @if(  $item->isReport == 1)
+                                <span class="badge bg-danger">Reported</span>
 
                                 @else
-                                <span class="badge bg-danger">Inactive</span>
+                                <span class="badge bg-success">Pass</span>
                                 @endif
                               </td>
                               <td>
@@ -48,7 +48,7 @@
                                 <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="bi bi-trash-fill"></i></a>
                                 
-                                @if(  $item->productStatus == 1)
+                                @if(  $item->isReport == 1)
                                 <a href="{{ route('product.inactive', $item->productID ) }}" class="btn btn-danger" title="Inactive Now"><i class="bi bi-file-arrow-down"></i> </a>
 
                                 @else

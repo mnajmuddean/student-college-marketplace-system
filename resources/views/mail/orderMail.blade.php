@@ -44,7 +44,7 @@ width: 100% !important;
 <!-- Body content -->
 <tr>
 <td class="content-cell" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-<h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">Hello! This is your invoice.</h1>
+<h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">Hi! Thank you for shopping with us. This is your invoice !</h1>
 <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Thank you for shopping with UiTM Jasin Student College Marketplace System.</p>
 <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
 <tr>
@@ -56,13 +56,13 @@ width: 100% !important;
 <tr>
 </tr>
 
-<td> Invoice No : {{    $order['invoice_no']}}</td>
-<td> Amount : {{    $order['amount']}}</td>
-<td> Name : {{    $order['name']}}</td>
-<td> Email : {{    $order['email']}}</td>
-<td> Matric Number : {{    $order['matricNo']}}</td>
-<td> Phone Number : {{    $order['phoneNo']}}</td>
-<td> Order Time : {{    $order['orderTime']}}</td>
+<p>Invoice No : {{    $order['invoice_no']}}</p>
+<p>Amount : RM {{    $order['amount']}}</p>
+<p>Name : {{    $order['name']}}</p>
+<p>Email : {{    $order['email']}}</p>
+<p>Matric Number : {{    $order['matricNo']}}</p>
+<p>Phone Number : {{    $order['phoneNo']}}</p>
+<p>Order Time : {{    $order['orderTime']}}</p>
 
 
 
