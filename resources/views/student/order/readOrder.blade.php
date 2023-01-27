@@ -28,7 +28,7 @@
               <a href="{{ route('manage.product')}}"  type="button" class="btn btn-primary mt-5">View Product</a>
               <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary mt-5">Update Profile</a>
               <a href="{{ route('student.orders')}}"  type="button" class="btn btn-primary mt-5">My Orders</a>
-              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-danger  mt-5">Pending Order</a>
+              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-primary  mt-5">Customer's Order</a>
               <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary  mt-5">Change Password</a>
               <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger  mt-5">Logout</a>
 
@@ -44,13 +44,19 @@
                     <div class="card recent-sales overflow-auto">
 
                       <div class="card-body">
-                        <h5 class="card-title">All Orders</h5>
+                        <h5 class="card-title">All Customer's Orders</h5>
                         
 
                         <table class="table table-borderless datatable">
                           <thead>
                             <tr>
                               <th scope="col">Date</th>
+                              <th scope="col">Buyer Name</th>
+                              <th scope="col">Buyer Phone No</th>
+                              <th scope="col">Buyer Matric No</th>
+                              <th scope="col">Buyer Room No</th>
+                              <th scope="col">Product Name</th>
+                              <th scope="col">Product Quantity</th>
                               <th scope="col">Invoice</th>
                               <th scope="col">Amount</th>
                               <th scope="col">Payment</th>
@@ -62,10 +68,30 @@
                           @foreach($orders as $order)
                             <tr>
                               <td>{{    $order->orderTime}}</td>
+                              <td>{{    $order->name}}</td>
+                              <td>{{    $order->phoneNo}}</td>
+                              <td>{{    $order->matricNo}}</td>
+                              <td>{{    $order->roomNo}}</td>
+                              <td>{{    $order->productName}}</td>
+                              <td>{{    $order->qty}}</td>
                               <td>{{    $order->invoice_no}}</td>
                               <td>RM {{    $order->amount}}</td>
                               <td>{{    $order->payment_method}}</td>
-                              <td><span class="badge bg-success">{{ $order->orderStatus}}</span></td>
+                              <td>
+                                
+                              
+                            
+                              @if ($order->orderStatus == 'Pending')
+                              <span class="badge bg-warning">{{ $order->orderStatus}}</span>
+                              <a href="{{ route('completeOrder',$order->id) }}" class="btn btn-primary" title="Complete Order">Complete Order </a>
+                              
+                              @elseif ($order->orderStatus == 'Completed')
+
+                              <span class="badge bg-success">{{ $order->orderStatus}}</span>
+
+                              @endif
+
+                            </td>
                             </tr>
                             @endforeach
 

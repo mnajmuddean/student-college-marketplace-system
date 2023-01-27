@@ -27,12 +27,13 @@ class AllController extends Controller
 
     public function pendingOrder(){
         $id = Auth::user()->id;
-        $orders = Order::select('orderStatus','invoice_no','payment_method','amount', 'orderTime', 'op.qty','op.price')
-                     ->where('users.id',$id)   
+        $orders = Order::select('orders.id','orders.name','orders.phoneNo','orders.roomNo','orders.matricNo','orderStatus','invoice_no','payment_method','amount', 'orderTime', 'op.productID','op.qty','p.productName')
+                    ->where('users.id',$id)   
                     ->join('order_products as op', 'orders.id', '=', 'op.orderID')
                     ->join('sellers_products as sp', 'op.productID', '=', 'sp.productID')
+                    ->join('products as p', 'sp.productID', '=', 'p.productID')
                     ->join('users', 'users.id', '=', 'sp.userID')
-                    ->where('orderStatus', 'Pending')
+                    ->orderBy('orderTime','DESC')
                     ->get();
         
         return view('student.order.readOrder',compact('orders'));

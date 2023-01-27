@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultipleImage;
+use App\Models\Feedbacks;
 use Illuminate\Support\Facades\Hash;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -93,7 +94,7 @@ class StudentController extends Controller
 
     public function productDetails($id){
 
-        $products = Product::select('productName', 'productPrice', 'productThumbnail','users.name','users.matricNo','users.profile_photo_path') 
+        $products = Product::select('productName', 'productPrice', 'productThumbnail','productDescription','users.name','users.matricNo','users.profile_photo_path') 
                                     ->where('products.productID',$id)                  
                                     ->join('sellers_products', 'products.productID', '=', 'sellers_products.productID')
                                     ->join('users', 'users.id', '=', 'sellers_products.userID')
@@ -102,9 +103,15 @@ class StudentController extends Controller
 
         $multiImage = MultipleImage::where('productID',$id)->get();
 
+
+        $feedback = Feedbacks::select('feedbackMessage','feedbackTime','users.name')
+                                    ->where('feedbacks.productID',$id)
+                                    ->join('users', 'users.id', '=', 'feedbacks.userID')
+                                    ->get();
+
         
        
-        return view('student.product.productDetails',compact('products','multiImage'));
+        return view('student.product.productDetails',compact('products','multiImage','feedback'));
     }
 
     public function CategoryWiseProduct($categoryID){

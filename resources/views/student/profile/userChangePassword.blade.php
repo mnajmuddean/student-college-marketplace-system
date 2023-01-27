@@ -31,7 +31,7 @@ $user = DB::table('users')->where('id', Auth::user()->id)->first();
               <a href="{{ route('manage.product')}}"  type="button" class="btn btn-primary mt-5">View Product</a>
               <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary mt-5">Update Profile</a>
               <a href="{{ route('student.orders')}}"  type="button" class="btn btn-primary mt-5">My Orders</a>
-              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-danger  mt-5">Pending Order</a>
+              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-primary  mt-5">Customer's Order</a>
               <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary  mt-5">Change Password</a>
               <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger  mt-5">Logout</a>
 

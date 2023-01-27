@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">All Products</h5>
+                  <h5 class="card-title">All Reported Products</h5>
 
                   <table class="table table-borderless datatable">
                     <thead>

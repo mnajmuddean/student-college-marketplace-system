@@ -16,6 +16,8 @@ use App\Http\Controllers\Wishlist\WishlistController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Stripe\StripeController;
 use App\Http\Controllers\Cash\CashController;
+use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Feedback\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -150,6 +152,7 @@ Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/store', [CheckoutController::class, 'checkoutStore'])->name('checkoutStore');
-
-
+Route::get('/completeOrder/{orderID}', [OrderController::class, 'completeOrder'])->name('completeOrder');
+Route::get('/addFeedback/{orderProductID}', [FeedbackController::class, 'addFeedback'])->name('addFeedback');
+Route::post('/createFeedback', [FeedbackController::class, 'createFeedback'])->name('createFeedback');
     

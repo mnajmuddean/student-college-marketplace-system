@@ -54,7 +54,7 @@
                         <div class="col-lg-6 col-12">
                             <div class="your-order">
                                 <div class="payment-method">
-                                <h5 class="panel-title mt-20">Select Payment Method : </h5>
+                                <h5 class="panel-title mt-20">Confirm Your Payment : </h5>
                                 <form action="{{    route('cashOrder')}}" method="post" id="payment-form">
                                                         @csrf
 

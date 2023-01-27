@@ -28,7 +28,7 @@
               <a href="{{ route('manage.product')}}"  type="button" class="btn btn-primary mt-5">View Product</a>
               <a href="{{ route('student.profile')}}"  type="button" class="btn btn-primary mt-5">Update Profile</a>
               <a href="{{ route('student.orders')}}"  type="button" class="btn btn-primary mt-5">My Orders</a>
-              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-danger  mt-5">Pending Order</a>
+              <a href="{{ route('student.pendingorder')}}" type="button" class="btn btn-primary  mt-5">Customer's Order</a>
               <a href="{{ route('student.changePassword')}}" type="button" class="btn btn-primary  mt-5">Change Password</a>
               <a href="{{ route('student.logout')}}" type="button" class="btn btn-danger  mt-5">Logout</a>
 
@@ -45,22 +45,6 @@
                     <div class="card recent-sales overflow-auto">
 
                       <div class="card-body">
-                                    <h5 class="card-title">Buyer Details</h5>
-                                            <div class="contact-page-side-content">
-                                            
-                                                    <b>Name : </b> {{$order->name}}</p> 
-                                                    <b>Email :  </b>{{$order->email}}</p> 
-                                                    <b>Matric Number :  </b>{{$order->matricNo}}</p>
-                                                    <b>Phone Number :  </b>{{$order->phoneNo}}</p>
-                                                    <b>Student Course :  </b>{{$order->studCourse}}</p>
-                                                    <b>Room Number :  </b>{{$order->roomNo}}</p>
-                                                    <b>Invoice Number :  </b>{{$order->invoice_no}}</p>
-                                                    <b>Payment Type :  </b>{{$order->payment_type}}</p>
-                                                    <b>Transaction ID :  </b>{{$order->transaction_id}}</p>
-                                                    <b>Order Total :  </b> RM {{$order->amount}}</p>
-                                                    <b>Order Status :  <span class="badge bg-success">{{ $order->orderStatus}}</span></p> 
-                                            </div>
-
                                               <h5 class="card-title mt-20">Order Details</h5>
                                             <table class="table table-borderless datatable ">
                                             <thead>
@@ -71,6 +55,7 @@
                                                 <th scope="col">Product Description</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Price</th>
+                                                <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             @foreach($orderProduct as $orderProduct)
@@ -82,10 +67,19 @@
                                                 <td >{{ $orderProduct->product->productDescription}}</td>
                                                 <td >{{ $orderProduct->qty}}</td>
                                                 <td >RM {{ $orderProduct->qty* $orderProduct->price }}</td>
+                                                <td >
+                                                  @if ($order->orderStatus == 'Pending')
+                                                  <button type="button" class="btn btn-primary" disabled>Add Feedback</button>
+                                                  @elseif ($order->orderStatus == 'Completed')
+
+                                                  <a href="{{ route('addFeedback', $orderProduct->orderProductID)}}" class="btn btn-primary" title="Add Feedback" >Add Feedback</a>
+
+                                                  @endif
+                                                </td>
                                             
                                             </tbody>
                                             @endforeach
-                                        
+
                                             </table>  
                       </div>
 
