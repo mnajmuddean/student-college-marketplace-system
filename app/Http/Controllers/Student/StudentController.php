@@ -104,7 +104,7 @@ class StudentController extends Controller
         $multiImage = MultipleImage::where('productID',$id)->get();
 
 
-        $feedback = Feedbacks::select('feedbackMessage','feedbackTime','users.name')
+        $feedback = Feedbacks::select('feedbackMessage','feedbackTime','users.name','users.profile_photo_path')
                                     ->where('feedbacks.productID',$id)
                                     ->join('users', 'users.id', '=', 'feedbacks.userID')
                                     ->get();
@@ -128,5 +128,14 @@ class StudentController extends Controller
             'product' => $product,
         ));
     }
+
+    public function ProductSearch(Request $request){
+		$item = $request->search;
+		// echo "$item";
+        
+		$products = Product::where('productName','LIKE',"%$item%")->get();
+        $category = Category::orderBy('categoryName','ASC')->get();
+		return view('student.product.search',compact('products','category'));
     //
+}
 }

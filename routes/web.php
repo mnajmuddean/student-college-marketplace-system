@@ -155,4 +155,6 @@ Route::post('/checkout/store', [CheckoutController::class, 'checkoutStore'])->na
 Route::get('/completeOrder/{orderID}', [OrderController::class, 'completeOrder'])->name('completeOrder');
 Route::get('/addFeedback/{orderProductID}', [FeedbackController::class, 'addFeedback'])->name('addFeedback');
 Route::post('/createFeedback', [FeedbackController::class, 'createFeedback'])->name('createFeedback');
-    
+
+Route::post('/search', [StudentController::class, 'ProductSearch'])->name('product.search');
+

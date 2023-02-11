@@ -20,7 +20,7 @@
             <div class="content-wraper">
                 <div class="container">
                     <div class="row single-product-area">
-                        <div class="col-lg-5 col-md-6">
+                        <div class="col-lg-5 col-md-6 mt-20">
                            <!-- Product Details Left -->
                             <div class="product-details-left">
                                 
@@ -71,6 +71,7 @@
                                 <div class="product-info">
                                     @foreach($products as $product)
                                     <h2 id="pName">{{  $product->productName}}</h2>   
+                                    <img src="/upload/userImages/{{ $product->profile_photo_path }}" style="width:50 px; height:50px; border-radius: 50%;">
                                     <strong class="product-details-ref">{{  $product->name}}</strong>
                                     <h2><span class="product-details-ref">{{  $product->matricNo}}</span><h2>
 
@@ -170,7 +171,9 @@
                                     
                                     @foreach ($feedback as $feedback)
                                     <div class="comment-author-infos pt-25">
-                                        <h6> Feedback From : <span>{{$feedback->name}} </span> </h6>
+
+                                    <img src="/upload/userImages/{{ $feedback->profile_photo_path }}" style="width:50 px; height:50px; border-radius: 50%;">
+                                        <h6 style="margin-top:20px;"> Feedback From : <span>{{$feedback->name}} </span> </h6>
                                         <span>{{$feedback->feedbackMessage}}</span>
                                         <em>{{$feedback->feedbackTime}}</em>
                                     </div>
