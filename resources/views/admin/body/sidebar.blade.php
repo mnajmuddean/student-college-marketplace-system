@@ -94,12 +94,7 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bx bxs-contact"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+     
     </ul>
 
   </aside>

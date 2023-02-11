@@ -83,22 +83,19 @@
                                             </span>
                                         </p>
                                     </div>
-                                    <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
-                                            <div class="quantity">
-                                                <label>Quantity</label>
-                                                <div class="cart-plus-minus">
+                                    <div class="form-group">
+                                        <label>Quantity</label>
+                                                
                                                     <input type="number" class="form-control" id="quantity" value="1" min="1">
-                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" id="productID" value="{{ $product->productID }}" min="1">
-                                            <button type="submit" onclick="addToCart()" class="add-to-cart" >Add to cart</button>
-                                        </form>
-    
-                                        @endforeach
+                                                    
+                                                
                                     </div>
+                                    <input type="hidden" id="productID" value="{{ $product->productID }}" min="1">
+
+                                    <div class="col-sm-7">
+                                    <button type="submit" class="btn btn-primary"  onclick="addToCart()">Add To Cart</button>
+                                    </div>
+                                    @endforeach
                                     <div class="product-additional-info pt-25">
                                         
                                     </div>
@@ -256,6 +253,48 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+
+            function addToCart(){
+    var productName = $('#pname').text();
+    var productID = $('#productID').val();
+    var quantity = $('#quantity').val();
+
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        data:{
+            quantity:quantity,
+            productName: productName
+        },
+        url: "/cart/data/store/"+productID,
+        success:function(data){
+            miniCart()
+            $('#closeModal').click();
+            console.log(data)
+            const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+        }
+    })
+}
+</script>
             <!-- Product Area End Here -->
            
 @endsection
