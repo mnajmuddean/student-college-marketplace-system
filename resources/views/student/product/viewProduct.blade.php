@@ -80,7 +80,6 @@
                               </td>
                               
                               <td>
-                                <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary" title="Product Status"><i class="bi bi-eye-fill"></i> </a>
                                 <a href="{{ route('product.edit', $item->productID ) }}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> </a>
                                 
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$item->productID}}"><i class="bi bi-trash-fill"></i></button>

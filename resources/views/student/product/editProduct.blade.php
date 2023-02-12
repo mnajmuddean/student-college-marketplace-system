@@ -18,7 +18,7 @@
 
         <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="{{ (!empty($user->profile_photo_path))? url('upload/userImages/'.$user->profile_photo_path):url('upload/no_image.png') }}" alt="Profile" class="rounded-circle" style="height:20% ; width: 20%">
+            <img src="{{ (!empty(Auth::user()->profile_photo_path))? url('upload/userImages/'.Auth::user()->profile_photo_path):url('upload/no_image.png') }}" alt="Profile" class="rounded-circle" style="height:20% ; width: 20%">
             <h5 class="mt-20">{{ Auth::user()->name }}</h5>
             <h5>{{ Auth::user()->matricNo }}</h5>
             <div class="btn-group-vertical mt-20" role="group" aria-label="Basic example">
