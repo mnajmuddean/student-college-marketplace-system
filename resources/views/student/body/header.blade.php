@@ -95,11 +95,7 @@
                                 <!-- Begin Header Middle Searchbox Area -->
                                 <form action="{{    route('product.search')}}" method="post" class="hm-searchbox">
                                     @csrf
-                                    <select class="nice-select select-search-category">
-                                        @foreach(   $categories as $category)
-                                        <option value="{{ url('category/details/'.$category->categoryID)  }}"><i class="icon {{ $category->categoryImage}}"></i> {{  $category->categoryName}}</option>
-                                        @endforeach                        
-                                    </select>
+                                    
                                     <input type="text" name="search" placeholder="Enter your search key ...">
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
@@ -135,7 +131,7 @@
                                                     <a href="{{ route('cart')}}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>View Full Cart</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                    <a href="{{ route('checkout')}}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Checkout</span>
                                                     </a>
                                                 </div>

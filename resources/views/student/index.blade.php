@@ -105,15 +105,7 @@ Home - UiTM Jasin Student College Marketplace System
                                                         <h5 class="manufacturer">
                                                             <a href="product-details.html">{{ $product['category']['categoryName'] }} </a>
                                                         </h5>
-                                                        <div class="rating-box">
-                                                            <ul class="rating">
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <h4><a class="product_name" href="{{ url('product/details/'.$product->productID)  }}">{{ $product->productName}}</a></h4>
                                                     <div class="price-box">
