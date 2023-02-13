@@ -37,7 +37,7 @@ Home - UiTM Jasin Student College Marketplace System
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             
-                                            <img src="{{ asset('/frontend/images/slider/slider1.jpeg')}}" alt="Li's Product Image">
+                                            <img src="{{ asset('/frontend/images/slider/slider1.jpg')}}" alt="Li's Product Image">
                                         </div>
                                     </div>
                                     <!-- Single Slide Area End Here -->
@@ -55,10 +55,11 @@ Home - UiTM Jasin Student College Marketplace System
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             
-                                            <img src="{{ asset('/frontend/images/slider/slider3.jpg')}}" alt="Li's Product Image">
+                                            <img src="{{ asset('/frontend/images/slider/slider3.jpeg')}}" alt="Li's Product Image">
                                         </div>
                                     </div>
                                     <!-- Single Slide Area End Here -->
+                                    
                                 </div>
                             </div>
                         </div>
