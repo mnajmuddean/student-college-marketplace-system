@@ -157,7 +157,6 @@
   <li class="list-group-item">Product Price: RM <strong id="pPrice"></strong></li>
   <li class="list-group-item">Product Code: <strong id="pCode"></strong></li>
   <li class="list-group-item">Category: <strong id="pCategory"></strong></li>
-  <li class="list-group-item">Products Availability: <span class="badge badge-pill badge-success" id="available" style="background: green; color:white"></span> <span class="badge badge-pill badge-danger" id="unavailable" style="background: red; color:white"></span></li>
 </ul>
             </div>
             <div class="col-lg-4">

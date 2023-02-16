@@ -30,38 +30,39 @@
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Name <span class="required">*</span></label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->name    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->name    }}" readonly>
+                                               
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Email</label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->email    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->email    }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Matric Number</label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->matricNo    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->matricNo    }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Phone Number</label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->phoneNo    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->phoneNo    }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Student Course</label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->studCourse    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->studCourse    }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Room Number</label>
-                                                <input placeholder="" type="text" value=" {{ Auth::user()->roomNo    }} ">
+                                                <input class="form-control" type="text" value="{{ Auth::user()->roomNo    }}" readonly>
                                             </div>
                                         </div>
                                     </div>
